@@ -1,0 +1,2029 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>ASAGOHAN Cafe & Eatery | Japanese-Khmer Fusion | Siem Reap</title>
+    <meta name="description" content="ASAGOHAN Cafe & Eatery in Siem Reap — all-day breakfast, Japanese, Khmer & Western dishes, fresh in-house bakery, coffee, fresh juice, smoothies, wine & cocktails. Vegan-friendly, air-conditioned, steps from Angkor Night Market.">
+    <meta name="keywords" content="ASAGOHAN, Siem Reap cafe, all day breakfast, Japanese breakfast Siem Reap, fresh bakery Siem Reap, vegan Siem Reap, Angkor Night Market, onigiri Cambodia, Khmer food, Western food, wine cocktails">
+    <link rel="icon" type="image/png" href="images/asagohan-logo.png">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            background-color: #fefaf7;
+            color: #2c2418;
+            line-height: 1.55;
+            overflow: hidden; /* Initially prevent scrolling */
+        }
+        
+        body.scroll-enabled {
+            overflow: auto;
+        }
+
+        /* ===== LOADING ANIMATION STYLES ===== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fefaf7 0%, #f7f2ea 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.6s ease;
+            opacity: 1;
+            visibility: visible;
+            cursor: wait;
+        }
+        
+        .loading-overlay.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loading-container {
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        /* Running Text Animation Container */
+        .running-text {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            padding: 0 10px;
+        }
+        
+        .running-line {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.4rem, 8vw, 2.2rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--charcoal);
+            white-space: nowrap;
+            display: inline-block;
+            animation: runText 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.2) forwards;
+            position: relative;
+        }
+        
+        @keyframes runText {
+            0% {
+                transform: translateX(-120%);
+                opacity: 0;
+                letter-spacing: 20px;
+            }
+            30% {
+                opacity: 0.5;
+            }
+            60% {
+                transform: translateX(0%);
+                letter-spacing: 4px;
+            }
+            100% {
+                transform: translateX(0%);
+                opacity: 1;
+                letter-spacing: 4px;
+            }
+        }
+        
+        /* Second line with delay */
+        .running-line-second {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 5vw, 1.4rem);
+            font-weight: 300;
+            color: var(--taupe);
+            white-space: nowrap;
+            display: inline-block;
+            margin-top: 0.5rem;
+            animation: runTextSecond 2.2s cubic-bezier(0.2, 0.9, 0.4, 1.2) 0.4s forwards;
+            transform: translateX(-120%);
+            opacity: 0;
+            letter-spacing: 8px;
+        }
+        
+        @keyframes runTextSecond {
+            0% {
+                transform: translateX(-120%);
+                opacity: 0;
+                letter-spacing: 15px;
+            }
+            40% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateX(0%);
+                opacity: 1;
+                letter-spacing: 2px;
+            }
+        }
+        
+        /* Responsive text handling for mobile */
+        @media (max-width: 600px) {
+            .running-line {
+                white-space: normal;
+                word-break: keep-all;
+                display: block;
+                line-height: 1.3;
+                animation: runTextMobile 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.2) forwards;
+            }
+            
+            .running-line-second {
+                white-space: normal;
+                display: block;
+                animation: runTextSecondMobile 2.2s cubic-bezier(0.2, 0.9, 0.4, 1.2) 0.4s forwards;
+            }
+            
+            @keyframes runTextMobile {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                    letter-spacing: 10px;
+                }
+                30% {
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                    letter-spacing: 2px;
+                }
+            }
+            
+            @keyframes runTextSecondMobile {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                    letter-spacing: 8px;
+                }
+                40% {
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+        
+        /* Decorative elements */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .loading-dot {
+            width: clamp(8px, 4vw, 10px);
+            height: clamp(8px, 4vw, 10px);
+            background: var(--gold-soft);
+            border-radius: 50%;
+            animation: bounceDot 0.8s ease-in-out infinite;
+        }
+        
+        .loading-dot:nth-child(1) { animation-delay: 0s; }
+        .loading-dot:nth-child(2) { animation-delay: 0.15s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.3s; }
+        .loading-dot:nth-child(4) { animation-delay: 0.45s; }
+        
+        @keyframes bounceDot {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-15px);
+                opacity: 1;
+                background: var(--charcoal);
+            }
+        }
+        
+        /* Decorative line */
+        .loading-line {
+            width: 0px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+            margin: 1.2rem auto 0;
+            animation: expandLine 1.8s ease-out 0.8s forwards;
+        }
+        
+        @keyframes expandLine {
+            0% {
+                width: 0px;
+                opacity: 0;
+            }
+            100% {
+                width: min(180px, 60vw);
+                opacity: 1;
+            }
+        }
+        
+        /* Sushi/Onigiri icon animation */
+        .loading-icon {
+            margin-top: 1.5rem;
+            font-size: clamp(1.5rem, 8vw, 2rem);
+            color: var(--gold-soft);
+            animation: spinIcon 1.2s ease-in-out 0.6s forwards;
+            opacity: 0;
+            transform: rotate(-180deg) scale(0.5);
+        }
+        
+        @keyframes spinIcon {
+            0% {
+                opacity: 0;
+                transform: rotate(-180deg) scale(0.5);
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        
+        /* Loading text pulse */
+        .loading-text {
+            margin-top: 1.2rem;
+            font-size: clamp(0.6rem, 3vw, 0.7rem);
+            color: var(--taupe);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulseText 1.2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseText {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        /* Main content initial hidden but ready for animations */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+        
+        /* Elements start invisible - will be animated by Intersection Observer */
+        .fade-up, .fade-left, .fade-right, .scale-in, .stagger-item {
+            opacity: 0;
+        }
+        
+        .fade-up {
+            transform: translateY(40px);
+            transition: opacity 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1), transform 0.8s cubic-bezier(0.2, 0.9, 0.4, 1.1);
+        }
+        .fade-up.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        .fade-left {
+            transform: translateX(-40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-left.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .fade-right {
+            transform: translateX(40px);
+            transition: opacity 0.7s ease-out, transform 0.7s ease-out;
+        }
+        .fade-right.visible {
+            opacity: 1;
+            transform: translateX(0);
+        }
+        
+        .scale-in {
+            transform: scale(0.95);
+            transition: opacity 0.6s ease, transform 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+        }
+        .scale-in.visible {
+            opacity: 1;
+            transform: scale(1);
+        }
+        
+        .stagger-item {
+            transform: translateY(30px);
+            transition: opacity 0.5s ease, transform 0.5s ease;
+        }
+        .stagger-item.visible {
+            opacity: 1;
+            transform: translateY(0);
+        }
+        
+        /* Responsive animations for mobile - reduce movement */
+        @media (max-width: 768px) {
+            .fade-up {
+                transform: translateY(25px);
+            }
+            .fade-left {
+                transform: translateX(-20px);
+            }
+            .fade-right {
+                transform: translateX(20px);
+            }
+            .stagger-item {
+                transform: translateY(20px);
+            }
+            .hero-img, .about-image, .bakery-image {
+                margin: 0 !important;
+            }
+
+            .hero-in-img, .about-in-img, .bakery-in-img {
+                left: 0 !important;
+                right: 0 !important;
+                bottom: 0 !important;
+                top: 0 !important;
+            }
+        }
+
+        :root {
+            --cream: #fefaf5;
+            --warm-beige: #f7f2ea;
+            --taupe: #8b7a66;
+            --charcoal: #3a3329;
+            --stone: #b8aa98;
+            --gold-soft: #c9b292;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        /* Responsive container padding */
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        section {
+            padding: 70px 0;
+            scroll-margin-top: 92px;
+        }
+        
+        /* Responsive section padding */
+        @media (max-width: 768px) {
+            section {
+                padding: 48px 0;
+                scroll-margin-top: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 40px 0;
+                scroll-margin-top: 70px;
+            }
+        }
+
+        h1, h2, h3 {
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        h1 {
+            font-size: clamp(1.8rem, 8vw, 3.6rem);
+            font-weight: 300;
+            letter-spacing: -0.02em;
+            line-height: 1.2;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 6vw, 2.3rem);
+            font-weight: 300;
+            margin-bottom: 1.5rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 48px;
+            height: 1.5px;
+            background: var(--gold-soft);
+        }
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 480px) {
+            h2:after {
+                width: 40px;
+                bottom: -8px;
+            }
+        }
+
+        h3 {
+            font-size: clamp(1.1rem, 5vw, 1.4rem);
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--charcoal);
+            padding: 10px 30px;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--taupe);
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 40px;
+        }
+        
+        .btn:hover {
+            background-color: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: var(--gold-soft);
+            border-color: var(--gold-soft);
+            color: #2c2418;
+        }
+        .btn-primary:hover {
+            background-color: #b5986e;
+            border-color: #b5986e;
+            color: white;
+        }
+        
+        /* Responsive buttons */
+        @media (max-width: 768px) {
+            .btn {
+                padding: 12px 28px;
+                min-height: 44px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .btn {
+                padding: 10px 24px;
+                font-size: 0.7rem;
+            }
+        }
+
+        /* ===== UNIFIED HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), background 0.3s ease;
+            transform: translateY(0);
+            background: rgba(254, 250, 247, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        header.header-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .unified-header {
+            display: block;
+            align-items: center;
+            padding: 10px 32px;
+            max-width: 1280px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            position: relative;
+        }
+        
+        .header-contact {
+            padding: 10px 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: end;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: var(--taupe);
+        }
+        
+        .header-contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: clamp(0.6rem, 2.5vw, 0.7rem);
+        }
+        
+        .header-contact-item i {
+            color: var(--gold-soft);
+            font-size: clamp(0.65rem, 2.8vw, 0.75rem);
+        }
+        
+        .header-contact-item a {
+            color: var(--taupe);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .header-contact-item a:hover {
+            color: var(--charcoal);
+        }
+
+        .logo-hamburger-row {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .logo h1 {
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        
+        .logo span {
+            font-weight: 200;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+        }
+        
+        .nav-wrapper {
+            justify-content: end;
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 300;
+            font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            position: relative;
+            padding: 4px 0;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold-soft);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold-soft);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .reserve-header-btn {
+            padding: 8px 24px;
+            font-size: 0.75rem;
+        }
+
+        .mobile-reserve-btn {
+            display: none;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+        
+        /* Desktop layout */
+        @media (min-width: 901px) {
+            .header-contact {
+                order: 2;
+            }
+            .logo {
+                order: 1;
+            }
+            .nav-wrapper {
+                order: 3;
+            }
+        }
+        
+        /* Mobile layout */
+        @media (max-width: 900px) {
+            .unified-header {
+                display: flex;
+                align-items: center;
+                padding: 10px 20px 0;
+                flex-direction: column;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .header-contact {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+                padding-bottom: 8px;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                margin-bottom: 0;
+            }
+            
+            .logo-hamburger-row {
+                transform: translateY(0);
+                position: relative;
+                order: 2;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .logo {
+                order: 1;
+                flex: 1;
+            }
+            
+            .logo h1 {
+                white-space: normal;
+                word-break: keep-all;
+                line-height: 1.2;
+            }
+            
+            .mobile-menu {
+                order: 2;
+                display: block;
+                font-size: 1.6rem;
+                padding: 8px;
+                margin-left: auto;
+            }
+            
+            .nav-wrapper {
+                order: 3;
+                width: 100%;
+                display: block;
+            }
+            
+            .reserve-header-btn {
+                display: none;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links.mobile-nav-active {
+                display: flex !important;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1.5rem;
+                gap: 1rem;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                z-index: 999;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                animation: slideDown 0.3s ease;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 0.9rem;
+            }
+            
+            .nav-links a::after {
+                display: none;
+            }
+            
+            .nav-links .mobile-reserve-btn {
+                display: block;
+                background: var(--gold-soft);
+                border: none;
+                border-radius: 40px;
+                margin-top: 0.5rem;
+                text-align: center;
+                padding: 12px 20px;
+                color: var(--charcoal);
+                font-weight: 500;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* hero */
+        .hero {
+            background: var(--cream);
+            padding: clamp(100px, 15vw, 140px) 0 clamp(40px, 5vw, 55px);
+        }
+        
+        .hero-grid {
+            display: flex;
+            align-items: center;
+            gap: clamp(1.5rem, 5vw, 3.5rem);
+            flex-wrap: wrap;
+        }
+        
+        .hero-text {
+            flex: 1;
+            min-width: 250px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+            .hero-text {
+                order: 2;
+                width: 100%;
+            }
+        }
+        
+        .hero-tagline {
+            font-size: clamp(0.6rem, 2.5vw, 0.85rem);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            color: var(--taupe);
+            margin-bottom: 0.8rem;
+        }
+        
+        .hero-desc {
+            color: #5f5548;
+            margin: 1.2rem 0;
+            max-width: 500px;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            line-height: 1.65;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-desc {
+                margin: 1rem auto;
+            }
+        }
+        
+        .hero-stats {
+            display: flex;
+            gap: clamp(1rem, 4vw, 1.8rem);
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+            justify-content: flex-start;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-stats {
+                justify-content: center;
+            }
+        }
+        
+        .stat {
+            display: block;
+        }
+        
+        .stat-number {
+            font-weight: 500;
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            color: var(--charcoal);
+        }
+        
+        .stat-label {
+            font-size: clamp(0.6rem, 2.2vw, 0.7rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--taupe);
+        }
+        
+        .hero-img {
+            flex: 1;
+            background: linear-gradient(135deg, #ede5db 0%, #e5dbcf 100%);
+            aspect-ratio: 1.5;
+            border-radius: 2px;
+            box-shadow: var(--shadow-md);
+            position: relative;
+            margin-right: -30px;
+            margin-bottom: -30px;
+        }
+        
+        @media (max-width: 768px) {
+            .hero-img {
+                order: 1;
+                margin: 0 auto;
+                width: 100%;
+                border-radius: 20px;
+            }
+            .hero-in-img {
+                position: static;
+            }
+            .hero-in-img img {
+                border-radius: 20px;
+            }
+        }
+        
+        .hero-in-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: -30px;
+            top: -30px;
+        }
+        
+        .hero-in-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* info cards */
+        .info-cards {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(1rem, 3vw, 1.8rem);
+            justify-content: center;
+            margin-top: -35px;
+            margin-bottom: 15px;
+            position: relative;
+            z-index: 10;
+        }
+        
+        @media (max-width: 768px) {
+            .info-cards {
+                flex-direction: column;
+                margin-top: 20px;
+                padding: 0 1rem;
+            }
+        }
+        
+        .card {
+            background: white;
+            padding: clamp(1rem, 4vw, 1.6rem) clamp(1rem, 4vw, 1.5rem);
+            box-shadow: var(--shadow-sm);
+            flex: 1;
+            min-width: 180px;
+            text-align: center;
+            border-bottom: 1px solid #f0e8e0;
+            border-radius: 16px;
+        }
+        
+        
+        @media (max-width: 768px) {
+            .card {
+                display: flex;
+                align-items: center;
+                text-align: left;
+                gap: 1rem;
+                min-width: auto;
+            }
+        }
+
+        .card-icon {
+            width: 100%;
+            height: 70px;
+            object-fit: cover;
+            margin-bottom: 0.8rem;
+        }
+        
+        @media (max-width: 768px) {
+            .card-icon {
+                margin-bottom: 0;
+            }
+        }
+        
+        .card h3 {
+            font-size: clamp(0.9rem, 4vw, 1.15rem);
+            font-weight: 500;
+            margin-bottom: 0.5rem;
+        }
+        
+        .card p {
+            font-size: clamp(0.7rem, 3vw, 0.8rem);
+            color: var(--taupe);
+        }
+
+        /* menu showcase */
+        .menu-showcase {
+            text-align: center;
+            background: #fff;
+            border-radius: 24px;
+            padding: clamp(1.5rem, 5vw, 2.5rem) clamp(1rem, 4vw, 2rem);
+            box-shadow: var(--shadow-md);
+            margin-top: 1.5rem;
+            transition: all 0.4s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .menu-showcase {
+                margin: 1rem;
+            }
+        }
+        
+        .menu-showcase:hover {
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .menu-icon {
+            font-size: clamp(2rem, 8vw, 3rem);
+            color: var(--gold-soft);
+            margin-bottom: 0.8rem;
+        }
+        
+        .menu-showcase h3 {
+            font-size: clamp(1.2rem, 5vw, 1.8rem);
+            font-weight: 400;
+            margin-bottom: 0.8rem;
+        }
+        
+        .menu-showcase p {
+            max-width: 500px;
+            margin: 0 auto 1.5rem;
+            color: var(--taupe);
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+        }
+        
+        .view-menu-btn {
+            background: var(--charcoal);
+            color: white;
+            border: none;
+            padding: clamp(10px, 3vw, 12px) clamp(28px, 8vw, 38px);
+            font-size: clamp(0.75rem, 3vw, 0.9rem);
+        }
+
+        /* bakery section */
+        .bakery-highlight {
+            background: var(--warm-beige);
+        }
+        
+        .bakery-grid {
+            display: flex;
+            gap: clamp(1.5rem, 5vw, 4rem);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .bakery-grid {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        .bakery-text {
+            flex: 1;
+        }
+        
+        .bakery-text p {
+            color: #5f5548;
+            margin-bottom: 1rem;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            line-height: 1.65;
+        }
+        
+        .bakery-image {
+            flex: 1;
+            background: linear-gradient(135deg, #ede5db 0%, #e5dbcf 100%);
+            aspect-ratio: 1.5;
+            position: relative;
+            margin-right: -30px;
+            margin-bottom: -30px;
+        }
+        
+        @media (max-width: 768px) {
+            .bakery-image {
+                order: 1;
+                margin: 0 auto;
+                width: 100%;
+                border-radius: 20px;
+            }
+            .bakery-text {
+                order: 2;
+            }
+            .bakery-in-img {
+                position: static;
+            }
+            .bakery-in-img img {
+                border-radius: 20px;
+            }
+        }
+        
+        .bakery-in-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            left: -30px;
+            top: -30px;
+        }
+        
+        .bakery-in-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* about */
+        .about-content {
+            display: flex;
+            gap: clamp(1.5rem, 5vw, 4rem);
+            align-items: center;
+            flex-wrap: wrap;
+        }
+        
+        @media (max-width: 768px) {
+            .about-content {
+                flex-direction: column;
+                text-align: center;
+            }
+        }
+        
+        .about-text {
+            flex: 1;
+            order: 2;
+        }
+        
+        @media (max-width: 768px) {
+            .about-text {
+                order: 2;
+            }
+        }
+        
+        .about-text p {
+            margin-bottom: 1rem;
+            color: #5f5548;
+            font-size: clamp(0.8rem, 3vw, 0.9rem);
+            line-height: 1.65;
+        }
+        
+        .about-image {
+            flex: 1;
+            background: linear-gradient(135deg, #ede5db 0%, #e5dbcf 100%);
+            aspect-ratio: 1.5;
+            position: relative;
+            margin-left: -30px;
+            margin-top: -30px;
+        }
+        
+        @media (max-width: 768px) {
+            .about-image {
+                order: 1;
+                margin: 0 auto;
+                width: 100%;
+                border-radius: 20px;
+            }
+            .about-in-img {
+                position: static;
+            }
+            .about-in-img img {
+                border-radius: 20px;
+            }
+        }
+        
+        .about-in-img {
+            position: absolute;
+            width: 100%;
+            height: 100%;
+            bottom: -30px;
+            right: -30px;
+        }
+        
+        .about-in-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* gallery */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(min(240px, 100%), 1fr));
+            gap: clamp(0.75rem, 2vw, 1rem);
+            margin-top: 2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-grid {
+                grid-template-columns: repeat(2, 1fr);
+                gap: 0.75rem;
+                padding: 0 1rem;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .gallery-grid {
+                grid-template-columns:  repeat(2, 1fr);
+                gap: 0rem;
+            }
+            .gallery-card {
+                border-radius: 0 !important;
+            }
+        }
+        
+        .gallery-card {
+            cursor: pointer;
+            border-radius: 18px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            background: #fff;
+        }
+        
+        @media (max-width: 768px) {
+            .gallery-card:hover {
+                transform: translateY(-4px);
+            }
+        }
+        
+        .gallery-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-card:hover .gallery-img {
+            transform: scale(1.05);
+        }
+        
+        .gallery-caption {
+            padding: clamp(0.5rem, 2vw, 0.7rem);
+            text-align: center;
+            font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+            color: var(--taupe);
+            background: white;
+            font-weight: 400;
+            display: none;
+        }
+
+        /* contact */
+        .contact-grid {
+            display: flex;
+            flex-wrap: wrap;
+            gap: clamp(1.5rem, 4vw, 2.8rem);
+        }
+        
+        @media (max-width: 768px) {
+            .contact-grid {
+                flex-direction: column;
+                gap: 1.5rem;
+                padding: 0 1rem;
+            }
+        }
+        
+        .contact-info {
+            flex: 1;
+        }
+        
+        .map {
+            flex: 1;
+            min-height: 280px;
+            background: #e5dbcf;
+            border-radius: 16px;
+            overflow: hidden;
+        }
+        
+        @media (max-width: 768px) {
+            .map {
+                min-height: 280px;
+            }
+
+            iframe {
+                height: 280px;
+                margin-bottom: -6px;
+            }
+        }
+        
+        .info-row {
+            display: flex;
+            align-items: center;
+            gap: clamp(0.75rem, 2vw, 1rem);
+            margin-bottom: 1.3rem;
+        }
+        
+        .info-row i {
+            width: clamp(24px, 5vw, 28px);
+            color: var(--gold-soft);
+            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+        }
+        
+        .info-row span, .info-row a {
+            font-weight: 300;
+            font-size: clamp(0.75rem, 2.8vw, 0.85rem);
+            color: var(--charcoal);
+            text-decoration: none;
+            word-break: break-word;
+            flex: 1;
+        }
+
+        /* modal */
+        .reserve-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .reserve-modal.active {
+            display: flex;
+        }
+        
+        @media (max-width: 768px) {
+            .reserve-modal.active {
+                padding: 1rem;
+                align-items: flex-start;
+                overflow-y: auto;
+            }
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 520px;
+            width: 90%;
+            border-radius: 24px;
+            overflow: hidden;
+            animation: modalPop 0.3s ease;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-content {
+                width: 95%;
+                max-height: 90vh;
+                overflow-y: auto;
+            }
+        }
+        
+        @keyframes modalPop {
+            from {
+                opacity: 0;
+                transform: scale(0.95);
+            }
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+        
+        .modal-header {
+            background: var(--warm-beige);
+            padding: clamp(1rem, 4vw, 1.3rem) clamp(1.25rem, 5vw, 2rem);
+        }
+        
+        .modal-header h3 {
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            font-weight: 400;
+        }
+        
+        .modal-body {
+            padding: clamp(1rem, 4vw, 1.8rem);
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: clamp(0.6rem, 2.5vw, 0.7rem);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: var(--taupe);
+            margin-bottom: 0.4rem;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: clamp(8px, 3vw, 10px) clamp(10px, 4vw, 14px);
+            border: 1px solid #e2d9cf;
+            background: #fefaf7;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 12px;
+            font-size: clamp(0.8rem, 3vw, 0.85rem);
+        }
+        
+        .form-group input:focus {
+            outline: none;
+            border-color: var(--gold-soft);
+        }
+        
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-footer {
+                flex-direction: column;
+            }
+            .modal-footer .btn {
+                width: 100%;
+            }
+        }
+        
+        .popup-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c2418;
+            color: white;
+            padding: clamp(10px, 3vw, 12px) clamp(20px, 6vw, 28px);
+            border-radius: 50px;
+            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
+            z-index: 2100;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-toast {
+                white-space: normal;
+                width: 90%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+        
+        .popup-toast.show {
+            opacity: 1;
+        }
+        
+        footer {
+            background: #f7f2ea;
+            padding: clamp(28px, 6vw, 42px) 0 clamp(24px, 5vw, 38px);
+            text-align: center;
+            border-top: 1px solid #e8dfd5;
+            color: var(--taupe);
+            font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: #9b8a74;
+            margin: 0 clamp(8px, 3vw, 14px);
+            font-size: clamp(0.9rem, 4vw, 1.1rem);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(36px, 8vw, 44px);
+            height: clamp(36px, 8vw, 44px);
+        }
+        
+        .social-links a:hover {
+            color: var(--gold-soft);
+            transform: translateY(-3px);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        html {
+            scroll-padding-top: 90px;
+        }
+        
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 80px;
+            }
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        /* Additional mobile fixes */
+        @media (max-width: 480px) {
+            .hero {
+                padding: 140px 0 20px;
+            }
+            .hero-stats {
+                display: flex;
+                flex-wrap: wrap;
+                align-items: center;
+                justify-content: space-between;
+                gap: 0.8rem;
+            }
+            
+            .stat {
+                text-align: center;
+            }
+            
+            .info-row {
+                display: flex;
+                align-items: center;
+                text-align: left;
+            }
+            
+            .info-row i {
+                width: auto;
+            }
+        }
+        
+        /* Landscape orientation */
+        @media (max-width: 768px) and (orientation: landscape) {
+            .hero {
+                padding: 90px 0 30px;
+            }
+            
+            .hero-grid {
+                flex-direction: row;
+                text-align: left;
+                gap: 1.5rem;
+            }
+            
+            
+            .info-cards {
+                flex-direction: row;
+                flex-wrap: wrap;
+            }
+            
+            .card {
+                flex: 1;
+                min-width: 180px;
+                display: block;
+                text-align: center;
+            }
+            
+            .card-icon {
+                margin-bottom: 0.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+        }
+        
+        /* Tablet styles */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .container {
+                padding: 0 24px;
+            }
+            
+            section {
+                padding: 60px 0;
+            }
+            
+            .hero-text h1 {
+                font-size: 2.8rem;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(3, 1fr);
+            }
+            
+            .card {
+                min-width: 200px;
+            }
+        }
+        
+        /* Touch device optimizations */
+        @media (hover: none) and (pointer: coarse) {
+            .btn:hover, .card:hover, .gallery-card:hover, .social-links a:hover {
+                transform: none;
+            }
+            
+            .btn:active {
+                transform: scale(0.98);
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOADING ANIMATION OVERLAY - Prevents scrolling -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-container">
+        <div class="running-text">
+            <div class="running-line">ASAGOHAN</div>
+            <div class="running-line-second">cafe & eatery</div>
+        </div>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+        <div class="loading-line"></div>
+        <div class="loading-icon">
+            <i class="fas fa-egg"></i>
+        </div>
+        <div class="loading-text">
+            <span>welcome</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" id="mainContent">
+    <header id="mainHeader">
+        <div class="unified-header">
+            <div class="header-contact">
+                <div class="header-contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+85569212555">+855 (0) 69 212 555</a>
+                </div>
+                <div class="header-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:asagohancambodia@gmail.com">asagohancambodia@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="logo-hamburger-row">
+                <div class="logo">
+                    <h1>ASAGOHAN <span>CAFE</span> <span>&</span> <span>EATERY</span></h1>
+                </div>
+                <div class="mobile-menu" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <div class="nav-wrapper">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="#home" data-section="home">Home</a></li>
+                    <li><a href="menu/index.html" data-section="menu">Menu</a></li>
+                    <li><a href="#bakery" data-section="bakery">Bakery</a></li>
+                    <li><a href="#about" data-section="about">Story</a></li>
+                    <li><a href="gallery/index.html" data-section="gallery">Gallery</a></li>
+                    <li><a href="#contact" data-section="contact">Visit</a></li>
+                    <li class="mobile-reserve-item"><a href="#reserve" class="mobile-reserve-btn" id="mobileReserveBtn">Reserve a Table</a></li>
+                </ul>
+                <a href="#reserve" class="btn btn-primary reserve-header-btn" id="reserveBtnNav">Reserve</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <section id="home" class="hero">
+            <div class="container hero-grid">
+                <div class="hero-text fade-right">
+                    <div class="hero-tagline">All Day Breakfast · Japanese · Khmer · Western</div>
+                    <h1>Asagohan — Where Your Day Begins</h1>
+                    <p class="hero-desc">
+                        All-day breakfast, authentic Japanese dishes, Khmer favorites, Western comfort food, and freshly baked pastries made in-house. Enjoy coffee, fresh juice, smoothies, wine & cocktails in an air-conditioned space near Angkor Night Market.
+                    </p>
+                    <a href="#menu" class="btn">Explore Cuisine</a>
+                    <div class="hero-stats">
+                        <div class="stat"><div class="stat-number">7:00 – 21:30</div><div class="stat-label">Daily Open</div></div>
+                        <div class="stat"><div class="stat-number">All Day Breakfast</div><div class="stat-label">Served All Day</div></div>
+                        <div class="stat"><div class="stat-number">Fresh Bakery</div><div class="stat-label">Made In-House</div></div>
+                    </div>
+                </div>
+                <div class="hero-img fade-left">
+                    <div class="hero-in-img"><img src="images/top-page-asagohan.webp" alt="ASAGOHAN interior" onerror="this.src='https://placehold.co/600x400/f7f2ea/8b7a66?text=ASAGOHAN+Cafe'"></div>
+                </div>
+            </div>
+        </section>
+
+        <div class="container">
+            <div class="info-cards" id="infoCards">
+                <div class="card stagger-item"><img src="images/breakfast.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>All Day Breakfast</h3><p>Western, Japanese & Khmer breakfast classics</p></div></div>
+                <div class="card stagger-item"><img src="images/baked.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Fresh Bakery</h3><p>Pastries, breads, and sweets baked daily</p></div></div>
+                <div class="card stagger-item"><img src="images/vegan.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Vegan Options</h3><p>Clearly labeled plant-based dishes</p></div></div>
+                <div class="card stagger-item"><img src="images/coffee-cocktail.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Coffee & Cocktails</h3><p>Specialty coffee, wine & smoothies</p></div></div>
+            </div>
+        </div>
+
+        <section id="menu">
+            <div class="container">
+                <div class="text-center fade-up">
+                    <h2>Our Menu</h2>
+                    <p style="margin-bottom: 0.8rem; font-size: 0.85rem;">Western · Japanese-Inspired · Khmer Favorites | Fresh Bakery · Coffee · Wine & Cocktails</p>
+                </div>
+                <div class="menu-showcase scale-in">
+                    <div class="menu-icon"><i class="fas fa-utensils"></i></div>
+                    <h3>Discover Our Culinary Journey</h3>
+                    <p>Explore our full menu featuring All-Day Breakfast, authentic Japanese dishes, Khmer specialties, Western classics, and our signature in-house bakery. Plus a curated selection of coffee, fresh juices, smoothies, wine & cocktails.</p>
+                    <a href="menu/index.html" class="btn view-menu-btn">VIEW FULL MENU <i class="fas fa-arrow-right"></i></a>
+                </div>
+            </div>
+        </section>
+
+        <section id="bakery" class="bakery-highlight">
+            <div class="container bakery-grid">
+                <div class="bakery-text fade-right">
+                    <h2>Fresh Bakery</h2>
+                    <p>At ASAGOHAN, we celebrate the art of traditional baking. Each day, our pastry team begins early, crafting fresh breads, pastries, and sweets — all made from scratch in our own kitchen. We carefully select high-quality ingredients and apply time-honored techniques to ensure every creation is full of flavor.</p>
+                    <p>From the first morning batch to the last treat of the day, our in-house bakery brings warmth, freshness, and craftsmanship to every bite.</p>
+                </div>
+                <div class="bakery-image fade-left">
+                    <div class="bakery-in-img"><img src="images/bakery.webp" alt="Fresh bakery counter" onerror="this.src='https://placehold.co/600x400/f7f2ea/8b7a66?text=Fresh+Bakery'"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="about">
+            <div class="container about-content">
+                <div class="about-text fade-left">
+                    <h2>Our Story</h2>
+                    <p><strong>Asagohan (朝ごはん)</strong> — meaning "breakfast" in Japanese — was born from a love of authentic Japanese comfort food, vibrant Cambodian ingredients, and Western culinary traditions.</p>
+                    <p>Whether you're starting your day before Angkor Wat or winding down after exploring Siem Reap, we invite you to share a meal with us. From delicate onigiri to hearty Khmer Amok, from all-day breakfast plates to aromatic coffee and sophisticated cocktails, we celebrate fusion with respect for tradition.</p>
+                    <a href="#contact" class="btn" style="margin-top: 8px;">Visit us</a>
+                </div>
+                <div class="about-image fade-right">
+                    <div class="about-in-img"><img src="images/our-story.webp" alt="Our story asagohan" onerror="this.src='https://placehold.co/600x400/f7f2ea/8b7a66?text=Our+Story'"></div>
+                </div>
+            </div>
+        </section>
+
+        <section id="gallery" style="background: var(--warm-beige);">
+            <div class="container">
+                <div class="text-center fade-up">
+                    <h2>Gallery</h2>
+                    <p style="font-size: 0.85rem;">Fresh bakery · Japanese breakfast · Siem Reap moments — click to explore more</p>
+                </div>
+                <div class="gallery-grid" id="galleryGrid"></div>
+            </div>
+        </section>
+
+        <section id="contact">
+            <div class="container">
+                <div class="text-center fade-up"><h2>Visit</h2><p style="margin-bottom: 1.8rem; font-size: 0.85rem;">Angkor Night Market Street, Siem Reap</p></div>
+                <div class="contact-grid">
+                    <div class="contact-info fade-right">
+                        <div class="info-row"><i class="fa-solid fa-location-dot"></i> <span>In front of Phalla Angkor Night Market, Angkor Night Market St, Krong Siem Reap</span></div>
+                        <div class="info-row"><i class="fa-solid fa-clock"></i> <span>Daily : 7:00 – 21:30 (All Day Breakfast)</span></div>
+                        <div class="info-row"><i class="fa-solid fa-phone"></i> <span>+855 (0) 69 212 555</span></div>
+                        <div class="info-row"><i class="fa-solid fa-envelope"></i> <span>asagohancambodia@gmail.com</span></div>
+                        <div style="margin-top: 24px;"><a href="https://maps.app.goo.gl/WKqQC854EEyLmbqZ7" target="_blank" class="btn">Get directions</a></div>
+                    </div>
+                    <div class="map fade-left">
+                        <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3300.5972043865627!2d103.85155486017672!3d13.355868540278133!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x311017555f47e31f%3A0xe0989ecc80b1e355!2sASAGOHAN%20Cafe%20%26%20Eatery!5e0!3m2!1sen!2skh!4v1774095342799!5m2!1sen!2skh" width="100%" height="100%" style="border:0;" allowfullscreen="" loading="lazy"></iframe>
+                    </div>
+                </div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2026 ASAGOHAN Cafe & Eatery. All-Day Breakfast · Japanese · Khmer · Western Cuisine | Fresh Bakery · Coffee · Wine & Cocktails</p>
+        </div>
+    </footer>
+
+    <div id="reserveModal" class="reserve-modal">
+        <div class="modal-content">
+            <div class="modal-header"><h3>Reserve a Table</h3></div>
+            <div class="modal-body">
+                <form id="reserveForm">
+                    <div class="form-group"><label>Guest Name *</label><input type="text" id="guestName" required></div>
+                    <div class="form-group"><label>Email / Phone *</label><input type="text" id="contactInfo" required></div>
+                    <div class="form-group"><label>Number of People *</label><input type="number" id="guests" min="1" max="20" required></div>
+                    <div class="form-group"><label>Date & Time *</label><input type="datetime-local" id="reserveDateTime" required></div>
+                    <div class="form-group"><label>Special Request</label><textarea id="specialRequest" rows="2"></textarea></div>
+                    <div class="modal-footer"><button type="button" class="btn btn-cancel" id="closeModalBtn">Cancel</button><button type="submit" class="btn btn-primary">Send</button></div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="toastPopup" class="popup-toast">✅ Reservation sent! We'll confirm shortly.</div>
+</div>
+
+<script>
+    // Gallery images
+    const galleryImages = [
+        { name: "Fresh Melon Bread", img: "images/gallery1.webp" },
+        { name: "Japanese Breakfast Set", img: "images/gallery2.webp" },
+        { name: "Croissants & Pastries", img: "images/gallery3.webp" },
+        { name: "Cafe Interior", img: "images/gallery4.webp" },
+        { name: "Onigiri Selection", img: "images/gallery5.webp" },
+        { name: "Vegan Dishes", img: "images/gallery6.webp" },
+        { name: "Signature Cocktails", img: "images/gallery7.webp" },
+        { name: "Fresh Juice & Smoothies", img: "images/gallery8.webp" }
+    ];
+    
+    const galleryGrid = document.getElementById('galleryGrid');
+    if(galleryGrid) {
+        galleryImages.forEach(item => {
+            const card = document.createElement('div');
+            card.className = 'gallery-card scale-in';
+            card.onclick = () => { window.location.href = 'gallery/index.html'; };
+            const img = document.createElement('img');
+            img.className = 'gallery-img';
+            img.src = item.img;
+            img.alt = item.name;
+            img.onerror = function() { this.src = 'https://placehold.co/400x400/f7f2ea/8b7a66?text='+encodeURIComponent(item.name); };
+            const caption = document.createElement('div');
+            caption.className = 'gallery-caption';
+            caption.innerText = item.name;
+            card.appendChild(img);
+            card.appendChild(caption);
+            galleryGrid.appendChild(card);
+        });
+    }
+    
+    // ===== LOADING ANIMATION - DISABLE SCROLL UNTIL LOAD COMPLETE =====
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const body = document.body;
+    
+    // Function to disable scrolling
+    function disableScroll() {
+        body.style.overflow = 'hidden';
+        // Also prevent wheel events on the loading overlay
+        loadingOverlay.addEventListener('wheel', preventScroll, { passive: false });
+        loadingOverlay.addEventListener('touchmove', preventScroll, { passive: false });
+    }
+    
+    // Function to enable scrolling
+    function enableScroll() {
+        body.style.overflow = '';
+        body.classList.add('scroll-enabled');
+        loadingOverlay.removeEventListener('wheel', preventScroll);
+        loadingOverlay.removeEventListener('touchmove', preventScroll);
+    }
+    
+    function preventScroll(e) {
+        e.preventDefault();
+        return false;
+    }
+    
+    // Initially disable scrolling
+    disableScroll();
+    
+    // ===== SCROLL ANIMATION INTERSECTION OBSERVER =====
+    // This will be initialized after loading completes to ensure all elements are animated
+    let animationObserver = null;
+    
+    function initScrollAnimations() {
+        const animatedElements = document.querySelectorAll('.fade-up, .fade-left, .fade-right, .scale-in, .stagger-item');
+        
+        animationObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add('visible');
+                    animationObserver.unobserve(entry.target);
+                }
+            });
+        }, { threshold: 0.15, rootMargin: "0px 0px -30px 0px" });
+        
+        animatedElements.forEach(el => animationObserver.observe(el));
+        
+        // Stagger animation for info cards
+        const staggerCards = document.querySelectorAll('.stagger-item');
+        staggerCards.forEach((card, index) => {
+            card.style.transitionDelay = `${index * 0.1}s`;
+            if (animationObserver) {
+                animationObserver.observe(card);
+            }
+        });
+    }
+    
+    // Hide loading overlay after page fully loads
+    window.addEventListener('load', function() {
+        // Add a small delay to ensure animation completes smoothly
+        setTimeout(() => {
+            loadingOverlay.classList.add('hide');
+            mainContent.classList.add('visible');
+            
+            // Enable scrolling after the overlay is hidden
+            setTimeout(() => {
+                enableScroll();
+                // Initialize scroll animations AFTER loading completes
+                initScrollAnimations();
+                // Remove overlay from DOM after transition
+                loadingOverlay.style.display = 'none';
+            }, 600);
+        }, 2200); // 2.2 seconds loading animation
+    });
+    
+    // Header scroll hide/show (only active after loading)
+    const header = document.getElementById('mainHeader');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
+    function handleHeaderOnScroll() {
+        if (!body.classList.contains('scroll-enabled')) return;
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            header.classList.add('header-hidden');
+        } 
+        else if (currentScrollY < lastScrollY) {
+            header.classList.remove('header-hidden');
+        }
+        if (currentScrollY <= 10) {
+            header.classList.remove('header-hidden');
+        }
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleHeaderOnScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Modal & reservation
+    const modal = document.getElementById('reserveModal');
+    const reserveBtns = document.querySelectorAll('#reserveBtnNav, #mobileReserveBtn, a[href="#reserve"]');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const reserveForm = document.getElementById('reserveForm');
+    const toast = document.getElementById('toastPopup');
+    
+    function openModal() { modal.classList.add('active'); }
+    function closeModal() { modal.classList.remove('active'); }
+    function showToast(msg) { toast.textContent = msg || "✅ Reservation sent! We'll confirm shortly."; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+    
+    reserveBtns.forEach(btn => btn.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        openModal(); 
+        closeMobileMenu(); 
+    }));
+    closeModalBtn.addEventListener('click', closeModal);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    
+    reserveForm.addEventListener('submit', async (e) => {
+        e.preventDefault();
+        const name = document.getElementById('guestName').value.trim();
+        const contact = document.getElementById('contactInfo').value.trim();
+        const guests = document.getElementById('guests').value;
+        const datetime = document.getElementById('reserveDateTime').value;
+        if(!name || !contact || !guests || !datetime) { alert("Please fill all required fields."); return; }
+        showToast("✅ Reservation received! We will send confirmation shortly.");
+        closeModal();
+        reserveForm.reset();
+        const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+        document.getElementById('reserveDateTime').value = now.toISOString().slice(0,16);
+    });
+    
+    const dtInput = document.getElementById('reserveDateTime');
+    if(dtInput) { const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); dtInput.min = now.toISOString().slice(0,16); dtInput.value = now.toISOString().slice(0,16); }
+    
+    // Mobile menu
+    const navLinksContainer = document.getElementById('navLinks');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    function closeMobileMenu() { navLinksContainer.classList.remove('mobile-nav-active'); }
+    mobileBtn.addEventListener('click', (e) => { e.stopPropagation(); navLinksContainer.classList.toggle('mobile-nav-active'); });
+    document.addEventListener('click', (e) => { if (!mobileBtn.contains(e.target) && !navLinksContainer.contains(e.target)) closeMobileMenu(); });
+    
+    // Smooth scroll function (only after loading)
+    function smoothScrollToElement(targetId) {
+        const target = document.querySelector(targetId);
+        const headerEl = document.getElementById('mainHeader');
+        if (target) {
+            const offset = headerEl ? headerEl.offsetHeight : 90;
+            window.scrollTo({
+                top: target.offsetTop - offset,
+                behavior: 'smooth'
+            });
+            return true;
+        }
+        return false;
+    }
+    
+    // Smooth scroll for all anchor links
+    document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+        const href = anchor.getAttribute('href');
+        if (href === "#" || href === "#reserve") return;
+        
+        anchor.addEventListener('click', function(e) {
+            e.preventDefault();
+            const targetId = this.getAttribute('href');
+            if (smoothScrollToElement(targetId)) {
+                const sectionId = targetId.substring(1);
+                const navLinks = document.querySelectorAll('.nav-links a');
+                navLinks.forEach(link => {
+                    if (link.getAttribute('data-section') === sectionId) {
+                        link.classList.add('active');
+                    } else {
+                        link.classList.remove('active');
+                    }
+                });
+                if (navLinksContainer && navLinksContainer.classList.contains('mobile-nav-active')) {
+                    navLinksContainer.classList.remove('mobile-nav-active');
+                }
+            }
+        });
+    });
+    
+    // Active link highlighting on scroll
+    window.addEventListener('scroll', () => {
+        if (!body.classList.contains('scroll-enabled')) return;
+        let current = '';
+        const sections = ['home', 'menu', 'bakery', 'about', 'gallery', 'contact'];
+        const scrollPos = window.scrollY + 110;
+        sections.forEach(s => { 
+            const el = document.getElementById(s); 
+            if(el && scrollPos >= el.offsetTop && scrollPos < el.offsetTop + el.offsetHeight) {
+                current = s;
+            }
+        });
+        const navLinks = document.querySelectorAll('.nav-links a');
+        navLinks.forEach(l => { 
+            if(l.getAttribute('data-section') === current) {
+                l.classList.add('active');
+            } else {
+                l.classList.remove('active');
+            }
+        });
+    });
+    
+    window.dispatchEvent(new Event('scroll'));
+</script>
+</body>
+</html>

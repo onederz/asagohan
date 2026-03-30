@@ -1,0 +1,1359 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
+    <title>Gallery | ASAGOHAN Cafe & Eatery | Siem Reap</title>
+    <meta name="description" content="Visual journey through ASAGOHAN Cafe & Eatery in Siem Reap — restaurant ambiance, Japanese-Khmer fusion dishes, fresh bakery and craft drinks.">
+    <meta name="keywords" content="ASAGOHAN gallery, Siem Reap cafe photos, Japanese breakfast gallery, bakery photos, cocktails gallery">
+    <link rel="icon" type="image/png" href="../images/asagohan-logo.png">
+    <!-- Font Awesome 6 -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Montserrat:wght@200;300;400;500;600;700;800&display=swap" rel="stylesheet">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 300;
+            background-color: #fefaf7;
+            color: #2c2418;
+            line-height: 1.55;
+            overflow: hidden; /* Initially prevent scrolling */
+        }
+        
+        body.scroll-enabled {
+            overflow: auto;
+        }
+
+        /* ===== LOADING ANIMATION STYLES (SAME AS HOME PAGE) ===== */
+        .loading-overlay {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: linear-gradient(135deg, #fefaf7 0%, #f7f2ea 100%);
+            z-index: 9999;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            transition: opacity 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1), visibility 0.6s ease;
+            opacity: 1;
+            visibility: visible;
+            cursor: wait;
+        }
+        
+        .loading-overlay.hide {
+            opacity: 0;
+            visibility: hidden;
+            pointer-events: none;
+        }
+        
+        .loading-container {
+            text-align: center;
+            position: relative;
+            padding: 0 20px;
+            width: 100%;
+        }
+        
+        /* Running Text Animation Container */
+        .running-text {
+            position: relative;
+            overflow: hidden;
+            margin-bottom: 2rem;
+            padding: 0 10px;
+        }
+        
+        .running-line {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(1.4rem, 8vw, 2.2rem);
+            font-weight: 300;
+            letter-spacing: 4px;
+            color: var(--charcoal);
+            white-space: nowrap;
+            display: inline-block;
+            animation: runText 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.2) forwards;
+            position: relative;
+        }
+        
+        @keyframes runText {
+            0% {
+                transform: translateX(-120%);
+                opacity: 0;
+                letter-spacing: 20px;
+            }
+            30% {
+                opacity: 0.5;
+            }
+            60% {
+                transform: translateX(0%);
+                letter-spacing: 4px;
+            }
+            100% {
+                transform: translateX(0%);
+                opacity: 1;
+                letter-spacing: 4px;
+            }
+        }
+        
+        /* Second line with delay */
+        .running-line-second {
+            font-family: 'Montserrat', sans-serif;
+            font-size: clamp(0.9rem, 5vw, 1.4rem);
+            font-weight: 300;
+            color: var(--taupe);
+            white-space: nowrap;
+            display: inline-block;
+            margin-top: 0.5rem;
+            animation: runTextSecond 2.2s cubic-bezier(0.2, 0.9, 0.4, 1.2) 0.4s forwards;
+            transform: translateX(-120%);
+            opacity: 0;
+            letter-spacing: 8px;
+        }
+        
+        @keyframes runTextSecond {
+            0% {
+                transform: translateX(-120%);
+                opacity: 0;
+                letter-spacing: 15px;
+            }
+            40% {
+                opacity: 0.5;
+            }
+            100% {
+                transform: translateX(0%);
+                opacity: 1;
+                letter-spacing: 2px;
+            }
+        }
+        
+        /* Responsive text handling for mobile */
+        @media (max-width: 600px) {
+            .running-line {
+                white-space: normal;
+                word-break: keep-all;
+                display: block;
+                line-height: 1.3;
+                animation: runTextMobile 2.5s cubic-bezier(0.2, 0.9, 0.4, 1.2) forwards;
+            }
+            
+            .running-line-second {
+                white-space: normal;
+                display: block;
+                animation: runTextSecondMobile 2.2s cubic-bezier(0.2, 0.9, 0.4, 1.2) 0.4s forwards;
+            }
+            
+            @keyframes runTextMobile {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                    letter-spacing: 10px;
+                }
+                30% {
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                    letter-spacing: 2px;
+                }
+            }
+            
+            @keyframes runTextSecondMobile {
+                0% {
+                    transform: translateX(-100%);
+                    opacity: 0;
+                    letter-spacing: 8px;
+                }
+                40% {
+                    opacity: 0.5;
+                }
+                100% {
+                    transform: translateX(0);
+                    opacity: 1;
+                    letter-spacing: 1px;
+                }
+            }
+        }
+        
+        /* Decorative elements */
+        .loading-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 1.5rem;
+            flex-wrap: wrap;
+        }
+        
+        .loading-dot {
+            width: clamp(8px, 4vw, 10px);
+            height: clamp(8px, 4vw, 10px);
+            background: var(--gold-soft);
+            border-radius: 50%;
+            animation: bounceDot 0.8s ease-in-out infinite;
+        }
+        
+        .loading-dot:nth-child(1) { animation-delay: 0s; }
+        .loading-dot:nth-child(2) { animation-delay: 0.15s; }
+        .loading-dot:nth-child(3) { animation-delay: 0.3s; }
+        .loading-dot:nth-child(4) { animation-delay: 0.45s; }
+        
+        @keyframes bounceDot {
+            0%, 100% {
+                transform: translateY(0);
+                opacity: 0.4;
+            }
+            50% {
+                transform: translateY(-15px);
+                opacity: 1;
+                background: var(--charcoal);
+            }
+        }
+        
+        /* Decorative line */
+        .loading-line {
+            width: 0px;
+            height: 2px;
+            background: linear-gradient(90deg, transparent, var(--gold-soft), transparent);
+            margin: 1.2rem auto 0;
+            animation: expandLine 1.8s ease-out 0.8s forwards;
+        }
+        
+        @keyframes expandLine {
+            0% {
+                width: 0px;
+                opacity: 0;
+            }
+            100% {
+                width: min(180px, 60vw);
+                opacity: 1;
+            }
+        }
+        
+        /* Gallery icon animation */
+        .loading-icon {
+            margin-top: 1.5rem;
+            font-size: clamp(1.5rem, 8vw, 2rem);
+            color: var(--gold-soft);
+            animation: spinIcon 1.2s ease-in-out 0.6s forwards;
+            opacity: 0;
+            transform: rotate(-180deg) scale(0.5);
+        }
+        
+        @keyframes spinIcon {
+            0% {
+                opacity: 0;
+                transform: rotate(-180deg) scale(0.5);
+            }
+            50% {
+                opacity: 0.7;
+            }
+            100% {
+                opacity: 1;
+                transform: rotate(0deg) scale(1);
+            }
+        }
+        
+        /* Loading text pulse */
+        .loading-text {
+            margin-top: 1.2rem;
+            font-size: clamp(0.6rem, 3vw, 0.7rem);
+            color: var(--taupe);
+            letter-spacing: 2px;
+            text-transform: uppercase;
+            animation: pulseText 1.2s ease-in-out infinite;
+        }
+        
+        @keyframes pulseText {
+            0%, 100% {
+                opacity: 0.4;
+            }
+            50% {
+                opacity: 1;
+            }
+        }
+        
+        /* Main content initial hidden */
+        .main-content {
+            opacity: 0;
+            transition: opacity 0.8s ease-in-out;
+        }
+        
+        .main-content.visible {
+            opacity: 1;
+        }
+
+        :root {
+            --cream: #fefaf5;
+            --warm-beige: #f7f2ea;
+            --taupe: #8b7a66;
+            --charcoal: #3a3329;
+            --stone: #b8aa98;
+            --gold-soft: #c9b292;
+            --white: #ffffff;
+            --shadow-sm: 0 2px 8px rgba(0,0,0,0.03);
+            --shadow-md: 0 8px 24px rgba(0,0,0,0.05);
+            --shadow-lg: 0 20px 35px -12px rgba(0,0,0,0.1);
+        }
+
+        .container {
+            max-width: 1280px;
+            margin: 0 auto;
+            padding: 0 32px;
+        }
+        
+        @media (max-width: 768px) {
+            .container {
+                padding: 0 20px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            .container {
+                padding: 0 16px;
+            }
+        }
+
+        section {
+            padding: 60px 0;
+            scroll-margin-top: 92px;
+        }
+        
+        @media (max-width: 768px) {
+            section {
+                padding: 48px 0;
+                scroll-margin-top: 80px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            section {
+                padding: 40px 0;
+                scroll-margin-top: 70px;
+            }
+        }
+
+        h1, h2, h3 {
+            font-weight: 400;
+            letter-spacing: -0.01em;
+        }
+
+        h2 {
+            font-size: clamp(1.5rem, 6vw, 2.3rem);
+            font-weight: 300;
+            margin-bottom: 1.8rem;
+            position: relative;
+            display: inline-block;
+        }
+        h2:after {
+            content: '';
+            position: absolute;
+            bottom: -10px;
+            left: 0;
+            width: 48px;
+            height: 1.5px;
+            background: var(--gold-soft);
+        }
+        .text-center h2:after {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+        
+        @media (max-width: 480px) {
+            h2:after {
+                width: 40px;
+                bottom: -8px;
+            }
+        }
+
+        .btn {
+            display: inline-block;
+            background-color: transparent;
+            color: var(--charcoal);
+            padding: 10px 30px;
+            text-decoration: none;
+            font-weight: 400;
+            font-size: 0.8rem;
+            letter-spacing: 1px;
+            transition: all 0.3s ease;
+            border: 1px solid var(--taupe);
+            cursor: pointer;
+            text-transform: uppercase;
+            border-radius: 40px;
+        }
+        
+        .btn:hover {
+            background-color: var(--charcoal);
+            color: white;
+            border-color: var(--charcoal);
+            transform: translateY(-2px);
+        }
+        
+        .btn-primary {
+            background: var(--gold-soft);
+            border-color: var(--gold-soft);
+            color: #2c2418;
+        }
+        .btn-primary:hover {
+            background-color: #b5986e;
+            border-color: #b5986e;
+            color: white;
+        }
+        
+        @media (max-width: 768px) {
+            .btn {
+                padding: 12px 28px;
+                min-height: 44px;
+                font-size: 0.75rem;
+            }
+        }
+        
+        /* ===== HEADER ===== */
+        header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            transition: transform 0.35s cubic-bezier(0.2, 0.9, 0.4, 1.1), background 0.3s ease;
+            transform: translateY(0);
+            background: rgba(254, 250, 247, 0.96);
+            backdrop-filter: blur(12px);
+            border-bottom: 1px solid rgba(0,0,0,0.05);
+        }
+        
+        header.header-hidden {
+            transform: translateY(-100%);
+        }
+        
+        .unified-header {
+            display: block;
+            align-items: center;
+            padding: 10px 32px;
+            max-width: 1280px;
+            margin: 0 auto;
+            gap: 1.5rem;
+            position: relative;
+        }
+        
+        .header-contact {
+            padding: 10px 0 15px;
+            display: flex;
+            flex-wrap: wrap;
+            gap: 1.5rem;
+            justify-content: end;
+            align-items: center;
+            font-size: 0.7rem;
+            font-weight: 300;
+            color: var(--taupe);
+        }
+        
+        .header-contact-item {
+            display: inline-flex;
+            align-items: center;
+            gap: 6px;
+            font-size: clamp(0.6rem, 2.5vw, 0.7rem);
+        }
+        
+        .header-contact-item i {
+            color: var(--gold-soft);
+            font-size: clamp(0.65rem, 2.8vw, 0.75rem);
+        }
+        
+        .header-contact-item a {
+            color: var(--taupe);
+            text-decoration: none;
+            transition: color 0.2s;
+        }
+        .header-contact-item a:hover {
+            color: var(--charcoal);
+        }
+
+        .logo-hamburger-row {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+        }
+        
+        .logo h1 {
+            font-size: clamp(1.2rem, 5vw, 1.6rem);
+            font-weight: 300;
+            letter-spacing: 1px;
+            white-space: nowrap;
+        }
+        
+        .logo span {
+            font-weight: 200;
+            font-size: clamp(0.6rem, 2.5vw, 0.8rem);
+        }
+        
+        .nav-wrapper {
+            justify-content: end;
+            display: flex;
+            align-items: center;
+            margin-left: auto;
+        }
+        
+        .nav-links {
+            display: flex;
+            gap: 2rem;
+            list-style: none;
+        }
+        
+        .nav-links a {
+            text-decoration: none;
+            color: var(--charcoal);
+            font-weight: 300;
+            font-size: clamp(0.7rem, 2.8vw, 0.8rem);
+            letter-spacing: 0.5px;
+            text-transform: uppercase;
+            transition: color 0.2s;
+            position: relative;
+            padding: 4px 0;
+        }
+        
+        .nav-links a:hover, .nav-links a.active {
+            color: var(--gold-soft);
+        }
+        
+        .nav-links a::after {
+            content: '';
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            width: 0;
+            height: 1.5px;
+            background: var(--gold-soft);
+            transition: width 0.3s ease;
+        }
+        
+        .nav-links a:hover::after, .nav-links a.active::after {
+            width: 100%;
+        }
+        
+        .reserve-header-btn {
+            padding: 8px 24px;
+            font-size: 0.75rem;
+        }
+
+        .mobile-reserve-btn {
+            display: none;
+        }
+        
+        .mobile-menu {
+            display: none;
+            font-size: 1.4rem;
+            cursor: pointer;
+            color: var(--charcoal);
+        }
+        
+        @media (min-width: 901px) {
+            .header-contact {
+                order: 2;
+            }
+            .logo {
+                order: 1;
+            }
+            .nav-wrapper {
+                order: 3;
+            }
+        }
+        
+        @media (max-width: 900px) {
+            .unified-header {
+                display: flex;
+                align-items: center;
+                padding: 10px 20px 0;
+                flex-direction: column;
+                gap: 0.5rem;
+                flex-wrap: wrap;
+            }
+            
+            .header-contact {
+                order: 1;
+                width: 100%;
+                justify-content: center;
+                gap: 1rem;
+                padding-bottom: 8px;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                margin-bottom: 0;
+            }
+            
+            .logo-hamburger-row {
+                transform: translateY(0);
+                position: relative;
+                order: 2;
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                width: 100%;
+            }
+            
+            .logo {
+                order: 1;
+                flex: 1;
+            }
+            
+            .logo h1 {
+                white-space: normal;
+                word-break: keep-all;
+                line-height: 1.2;
+            }
+            
+            .mobile-menu {
+                order: 2;
+                display: block;
+                font-size: 1.6rem;
+                padding: 8px;
+                margin-left: auto;
+            }
+            
+            .nav-wrapper {
+                order: 3;
+                width: 100%;
+                display: block;
+            }
+            
+            .reserve-header-btn {
+                display: none;
+            }
+            
+            .nav-links {
+                display: none;
+                flex-direction: column;
+                width: 100%;
+            }
+            
+            .nav-links.mobile-nav-active {
+                display: flex !important;
+                position: absolute;
+                top: calc(100% + 10px);
+                left: 0;
+                width: 100%;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(10px);
+                padding: 1.5rem;
+                gap: 1rem;
+                box-shadow: 0 10px 25px rgba(0,0,0,0.1);
+                z-index: 999;
+                border-bottom: 1px solid rgba(0,0,0,0.05);
+                animation: slideDown 0.3s ease;
+            }
+            
+            .nav-links li {
+                width: 100%;
+                text-align: center;
+            }
+            
+            .nav-links a {
+                display: block;
+                padding: 12px 0;
+                font-size: 0.9rem;
+            }
+            
+            .nav-links a::after {
+                display: none;
+            }
+            
+            .nav-links .mobile-reserve-btn {
+                display: block;
+                background: var(--gold-soft);
+                border: none;
+                border-radius: 40px;
+                margin-top: 0.5rem;
+                text-align: center;
+                padding: 12px 20px;
+                color: var(--charcoal);
+                font-weight: 500;
+            }
+        }
+        
+        @keyframes slideDown {
+            from {
+                opacity: 0;
+                transform: translateY(-10px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* ===== GALLERY GRID (4 COLUMNS) ===== */
+        .gallery-section {
+            background: var(--cream);
+        }
+        
+        .section-subhead {
+            text-align: center;
+            font-size: 0.85rem;
+            color: var(--taupe);
+            margin-top: -0.5rem;
+            margin-bottom: 2rem;
+            letter-spacing: 0.5px;
+        }
+        
+        .grid-4 {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 1rem;
+            margin-top: 1rem;
+        }
+        
+        @media (max-width: 1024px) {
+            .grid-4 {
+                grid-template-columns: repeat(3, 1fr);
+                gap: 0.5rem;
+            }
+        }
+        
+        @media (max-width: 768px) {
+            .grid-4 {
+                grid-template-columns: repeat(2, 1fr);
+            }
+        }
+        
+        .gallery-item {
+            background: white;
+            border-radius: 20px;
+            overflow: hidden;
+            box-shadow: var(--shadow-sm);
+            transition: all 0.35s ease;
+            cursor: pointer;
+            animation: fadeInUp 0.6s cubic-bezier(0.2, 0.9, 0.4, 1.1) forwards;
+            opacity: 0;
+            transform: translateY(20px);
+        }
+        
+        .gallery-item:hover {
+            transform: translateY(-6px);
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .gallery-item-img {
+            width: 100%;
+            aspect-ratio: 1 / 1;
+            object-fit: cover;
+            display: block;
+            transition: transform 0.4s ease;
+        }
+        
+        .gallery-item:hover .gallery-item-img {
+            transform: scale(1.05);
+        }
+        
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+        
+        .hero-gallery {
+            background: linear-gradient(135deg, #fefaf7 0%, #f7f2ea 100%);
+            padding: 140px 0 50px;
+            text-align: center;
+        }
+        
+        .hero-gallery h1 {
+            font-size: clamp(2rem, 8vw, 3.5rem);
+            font-weight: 300;
+            margin-bottom: 0.5rem;
+            letter-spacing: -0.02em;
+        }
+        
+        .hero-gallery p {
+            color: var(--taupe);
+            max-width: 600px;
+            margin: 0 auto;
+            font-size: 0.9rem;
+        }
+        
+        /* lightbox modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.9);
+            z-index: 3000;
+            justify-content: center;
+            align-items: center;
+            cursor: pointer;
+            backdrop-filter: blur(5px);
+        }
+        
+        .lightbox-modal.active {
+            display: flex;
+        }
+        
+        .lightbox-content {
+            max-width: 90vw;
+            max-height: 85vh;
+            position: relative;
+            animation: lightboxFade 0.25s ease;
+        }
+        
+        .lightbox-content img {
+            width: auto;
+            max-width: 100%;
+            max-height: 85vh;
+            object-fit: contain;
+            border-radius: 12px;
+            box-shadow: 0 20px 35px rgba(0,0,0,0.3);
+        }
+        
+        .close-lightbox {
+            position: absolute;
+            top: -40px;
+            right: 0;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+            transition: opacity 0.2s;
+        }
+        
+        .close-lightbox:hover {
+            opacity: 0.7;
+        }
+        
+        @keyframes lightboxFade {
+            from { opacity: 0; transform: scale(0.96); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        footer {
+            background: #f7f2ea;
+            padding: clamp(28px, 6vw, 42px) 0 clamp(24px, 5vw, 38px);
+            text-align: center;
+            border-top: 1px solid #e8dfd5;
+            color: var(--taupe);
+            font-size: clamp(0.65rem, 2.5vw, 0.75rem);
+        }
+        
+        .social-links {
+            display: flex;
+            justify-content: center;
+            flex-wrap: wrap;
+            gap: 0.5rem;
+            margin-bottom: 1rem;
+        }
+        
+        .social-links a {
+            color: #9b8a74;
+            margin: 0 clamp(8px, 3vw, 14px);
+            font-size: clamp(0.9rem, 4vw, 1.1rem);
+            transition: all 0.3s ease;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            justify-content: center;
+            width: clamp(36px, 8vw, 44px);
+            height: clamp(36px, 8vw, 44px);
+        }
+        
+        .social-links a:hover {
+            color: var(--gold-soft);
+            transform: translateY(-3px);
+        }
+        
+        .text-center {
+            text-align: center;
+        }
+        
+        html {
+            scroll-padding-top: 90px;
+        }
+        
+        @media (max-width: 768px) {
+            html {
+                scroll-padding-top: 80px;
+            }
+        }
+        
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
+        }
+        
+        @media (max-width: 480px) {
+            .hero-gallery {
+                padding: 140px 0 30px;
+            }
+        }
+        
+        /* Reserve modal styles */
+        .reserve-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0,0,0,0.7);
+            z-index: 2000;
+            justify-content: center;
+            align-items: center;
+            backdrop-filter: blur(5px);
+        }
+        
+        .modal-content {
+            background: white;
+            max-width: 520px;
+            width: 90%;
+            border-radius: 24px;
+            overflow: hidden;
+            animation: modalPop 0.3s ease;
+        }
+        
+        @keyframes modalPop {
+            from { opacity: 0; transform: scale(0.95); }
+            to { opacity: 1; transform: scale(1); }
+        }
+        
+        .form-group {
+            margin-bottom: 1.2rem;
+        }
+        
+        .form-group label {
+            display: block;
+            font-size: 0.7rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 500;
+            color: var(--taupe);
+            margin-bottom: 0.4rem;
+        }
+        
+        .form-group input, .form-group select, .form-group textarea {
+            width: 100%;
+            padding: 10px 14px;
+            border: 1px solid #e2d9cf;
+            background: #fefaf7;
+            font-family: 'Montserrat', sans-serif;
+            border-radius: 12px;
+            font-size: 0.85rem;
+        }
+        
+        .modal-footer {
+            display: flex;
+            gap: 1rem;
+            justify-content: flex-end;
+            margin-top: 1.2rem;
+        }
+        
+        @media (max-width: 768px) {
+            .modal-footer {
+                flex-direction: column;
+            }
+            .modal-footer .btn {
+                width: 100%;
+            }
+        }
+        
+        .popup-toast {
+            position: fixed;
+            bottom: 30px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2c2418;
+            color: white;
+            padding: 10px 28px;
+            border-radius: 50px;
+            font-size: 0.8rem;
+            z-index: 2100;
+            opacity: 0;
+            transition: opacity 0.2s;
+            pointer-events: none;
+            white-space: nowrap;
+        }
+        
+        @media (max-width: 768px) {
+            .popup-toast {
+                white-space: normal;
+                width: 90%;
+                max-width: 280px;
+                text-align: center;
+            }
+        }
+    </style>
+</head>
+<body>
+
+<!-- LOADING ANIMATION OVERLAY -->
+<div class="loading-overlay" id="loadingOverlay">
+    <div class="loading-container">
+        <div class="running-text">
+            <div class="running-line">ASAGOHAN</div>
+            <div class="running-line-second">gallery</div>
+        </div>
+        <div class="loading-dots">
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+            <div class="loading-dot"></div>
+        </div>
+        <div class="loading-line"></div>
+        <div class="loading-icon">
+            <i class="fas fa-camera"></i>
+        </div>
+        <div class="loading-text">
+            <span>moments await</span>
+        </div>
+    </div>
+</div>
+
+<!-- MAIN CONTENT -->
+<div class="main-content" id="mainContent">
+    <header id="mainHeader">
+        <div class="unified-header">
+            <div class="header-contact">
+                <div class="header-contact-item">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+85569212555">+855 (0) 69 212 555</a>
+                </div>
+                <div class="header-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <a href="mailto:asagohancambodia@gmail.com">asagohancambodia@gmail.com</a>
+                </div>
+            </div>
+            
+            <div class="logo-hamburger-row">
+                <div class="logo">
+                    <h1>ASAGOHAN <span>CAFE</span> <span>&</span> <span>EATERY</span></h1>
+                </div>
+                <div class="mobile-menu" id="mobileMenuBtn">
+                    <i class="fas fa-bars"></i>
+                </div>
+            </div>
+            
+            <div class="nav-wrapper">
+                <ul class="nav-links" id="navLinks">
+                    <li><a href="../index.html" data-section="home">Home</a></li>
+                    <li><a href="../menu/index.html" data-section="menu">Menu</a></li>
+                    <li><a href="../index.html#bakery" data-section="bakery">Bakery</a></li>
+                    <li><a href="../index.html#about" data-section="about">Story</a></li>
+                    <li><a href="index.html" class="active" data-section="gallery">Gallery</a></li>
+                    <li><a href="../index.html#contact" data-section="contact">Visit</a></li>
+                    <li class="mobile-reserve-item"><a href="#reserve" class="mobile-reserve-btn" id="mobileReserveBtn">Reserve a Table</a></li>
+                </ul>
+                <a href="#reserve" class="btn btn-primary reserve-header-btn" id="reserveBtnNav">Reserve</a>
+            </div>
+        </div>
+    </header>
+
+    <main>
+        <div class="hero-gallery">
+            <div class="container">
+                <h1>Our Visual Story</h1>
+                <p>Authentic moments at ASAGOHAN — from the cozy corners to the vibrant flavors of Japanese-Khmer fusion.</p>
+            </div>
+        </div>
+
+        <section class="gallery-section" id="restaurant">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Restaurant Atmosphere</h2>
+                    <div class="section-subhead">Cozy interiors · Warm vibes · Angkor Night Market district</div>
+                </div>
+                <div class="grid-4" id="restaurantGrid"></div>
+            </div>
+        </section>
+
+        <section class="gallery-section" style="background: var(--warm-beige);" id="food">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Signature Dishes</h2>
+                    <div class="section-subhead">All-day breakfast · Japanese sets · Khmer specialties · Western comfort</div>
+                </div>
+                <div class="grid-4" id="foodGrid"></div>
+            </div>
+        </section>
+
+        <section class="gallery-section" id="drink-bakery">
+            <div class="container">
+                <div class="text-center">
+                    <h2>Drinks & Bakery</h2>
+                    <div class="section-subhead">Specialty coffee · craft cocktails · fresh juice · daily pastries</div>
+                </div>
+                <div class="grid-4" id="drinkGrid"></div>
+            </div>
+        </section>
+    </main>
+
+    <footer>
+        <div class="container">
+            <div class="social-links">
+                <a href="#"><i class="fab fa-facebook-f"></i></a>
+                <a href="#"><i class="fab fa-instagram"></i></a>
+                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+            </div>
+            <p>&copy; 2026 ASAGOHAN Cafe & Eatery. All-Day Breakfast · Japanese · Khmer · Western Cuisine | Fresh Bakery · Coffee · Wine & Cocktails</p>
+        </div>
+    </footer>
+
+    <div id="reserveModal" class="reserve-modal">
+        <div class="modal-content">
+            <div class="modal-header" style="background: var(--warm-beige); padding:1.3rem 2rem;">
+                <h3 style="font-weight:400;">Reserve a Table</h3>
+            </div>
+            <div class="modal-body" style="padding:1.8rem;">
+                <form id="reserveForm">
+                    <div class="form-group"><label>Guest Name *</label><input type="text" id="guestName" required></div>
+                    <div class="form-group"><label>Email / Phone *</label><input type="text" id="contactInfo" required></div>
+                    <div class="form-group"><label>Number of People *</label><input type="number" id="guests" min="1" max="20" required></div>
+                    <div class="form-group"><label>Date & Time *</label><input type="datetime-local" id="reserveDateTime" required></div>
+                    <div class="form-group"><label>Special Request</label><textarea id="specialRequest" rows="2"></textarea></div>
+                    <div class="modal-footer">
+                        <button type="button" class="btn btn-cancel" id="closeModalBtn">Cancel</button>
+                        <button type="submit" class="btn btn-primary">Send</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </div>
+    <div id="toastPopup" class="popup-toast">✅ Reservation sent! We'll confirm shortly.</div>
+</div>
+
+<script>
+    // Gallery Data
+    const restaurantItems = [
+        { img: "../images/upload/ambiance/ASAGOHAN ST-38.webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN (6 of 14).webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN (5 of 14).webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN (1 of 14).webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN (2 of 14).webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN (4 of 14).webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN ST-3.webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN ST-21.webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN ST-36 (1).webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN ST-28.webp" },
+        { img: "../images/upload/ambiance/ASAGOHAN ST-29.webp" }
+    ];
+    
+    const foodItems = [
+        { img: "../images/upload/food/528243060_122142687716753000_8808707161980692148_n.webp" },
+        { img: "../images/upload/food/543121919_122147046980753000_7774930891047406828_n.webp" },
+        { img: "../images/upload/food/543180552_122147046926753000_511257414197306998_n.webp" },
+        { img: "../images/upload/food/543182244_122147046986753000_4502630974519498891_n.webp" },
+        { img: "../images/upload/food/545846522_122147599196753000_7772678247260382143_n.webp" },
+        { img: "../images/upload/food/549642747_122149262756753000_3435980665860998736_n.webp" },
+        { img: "../images/upload/food/556550529_122151049070753000_8181626148151534016_n.webp" },
+        { img: "../images/upload/food/565636666_122153449844753000_8263059884335889956_n.webp" },
+        { img: "../images/upload/food/566217092_122153449868753000_5376272918301602901_n.webp" },
+        { img: "../images/upload/food/568191025_122153454146753000_169703993297601393_n.webp" },
+        { img: "../images/upload/food/602306274_122161938422753000_5492761169521920943_n.webp" },
+        { img: "../images/upload/food/602380425_122163276788753000_4700844838718022550_n.webp" },
+        { img: "../images/upload/food/602467201_122161938728753000_8838205014849217455_n.webp" },
+        { img: "../images/upload/food/603063676_122162803016753000_6493758294851228275_n.webp" },
+        { img: "../images/upload/food/607988014_122163276812753000_6262629574208150582_n.webp" },
+        { img: "../images/upload/food/637322731_122170632314753000_1702367081360510138_n.webp" },
+        { img: "../images/upload/food/638563784_122170626542753000_8174973190671681340_n.webp" },
+        { img: "../images/upload/food/641297033_122170632290753000_4632575892637204316_n.webp" },
+        { img: "../images/upload/food/646799263_122171797886753000_4528385729420688584_n.webp" },
+        { img: "../images/upload/food/646800610_122172308456753000_2615574715775146803_n.webp" },
+        { img: "../images/upload/food/652318984_122173407800753000_6945075622866211562_n.webp" },
+        { img: "../images/upload/food/653062515_122173408040753000_7572734840411058611_n.webp" },
+        { img: "../images/upload/food/653826179_122173405538753000_3683536965702184495_n.webp" }
+    ];
+    
+    const drinkBakeryItems = [
+        { img: "../images/upload/drink-bakery/ASAGOHAN-61 (1).webp" },
+        { img: "../images/upload/drink-bakery/Canon EOS 700D (3 of 15).webp" },
+        { img: "../images/upload/drink-bakery/Canon EOS 700D (6 of 15).webp" },
+        { img: "../images/upload/drink-bakery/Canon EOS 700D (10 of 15).webp" },
+        { img: "../images/upload/drink-bakery/Canon EOS 700D (12 of 15).webp" },
+        { img: "../images/upload/drink-bakery/Canon EOS 700D (13 of 15).webp" },
+        { img: "../images/upload/drink-bakery/Dubia Cookie-3.webp" },
+        { img: "../images/upload/drink-bakery/IMG_5142-topaz.webp" },
+        { img: "../images/upload/drink-bakery/IMG_5144-topaz.webp" },
+        { img: "../images/upload/drink-bakery/IMG_5152-topaz.webp" },
+        { img: "../images/upload/drink-bakery/IMG_5880.webp" },
+        { img: "../images/upload/drink-bakery/MOCHI (5 of 31).webp" },
+        { img: "../images/upload/drink-bakery/MOCHI (7 of 31).webp" },
+        { img: "../images/upload/drink-bakery/MOCHI (11 of 31).webp" },
+        { img: "../images/upload/drink-bakery/MOCHI (14 of 31).webp" }
+    ];
+    
+    function renderGrid(containerId, items) {
+        const container = document.getElementById(containerId);
+        if(!container) return;
+        container.innerHTML = '';
+        items.forEach((item, index) => {
+            const card = document.createElement('div');
+            card.className = 'gallery-item';
+            card.style.animationDelay = `${0.05 + index * 0.03}s`;
+            
+            const img = document.createElement('img');
+            img.src = item.img;
+            img.alt = 'ASAGOHAN gallery image';
+            img.className = 'gallery-item-img';
+            img.loading = 'lazy';
+            img.onerror = function() { 
+                this.src = 'https://placehold.co/600x600/f7f2ea/8b7a66?text=Image';
+            };
+            
+            card.appendChild(img);
+            card.addEventListener('click', () => openLightbox(item.img));
+            container.appendChild(card);
+        });
+    }
+    
+    // Lightbox functionality
+    const lightbox = document.createElement('div');
+    lightbox.className = 'lightbox-modal';
+    lightbox.innerHTML = `
+        <div class="lightbox-content">
+            <button class="close-lightbox">&times;</button>
+            <img id="lightboxImg" src="" alt="fullsize">
+        </div>
+    `;
+    document.body.appendChild(lightbox);
+    const lightboxImg = document.getElementById('lightboxImg');
+    const closeLightboxBtn = lightbox.querySelector('.close-lightbox');
+    
+    function openLightbox(imgSrc) {
+        lightboxImg.src = imgSrc;
+        lightbox.classList.add('active');
+    }
+    function closeLightbox() {
+        lightbox.classList.remove('active');
+    }
+    lightbox.addEventListener('click', (e) => {
+        if(e.target === lightbox || e.target === closeLightboxBtn) closeLightbox();
+    });
+    document.addEventListener('keydown', (e) => { if(e.key === 'Escape' && lightbox.classList.contains('active')) closeLightbox(); });
+    
+    // ===== LOADING ANIMATION =====
+    const loadingOverlay = document.getElementById('loadingOverlay');
+    const mainContent = document.getElementById('mainContent');
+    const body = document.body;
+    
+    function disableScroll() {
+        body.style.overflow = 'hidden';
+        loadingOverlay.addEventListener('wheel', preventScroll, { passive: false });
+        loadingOverlay.addEventListener('touchmove', preventScroll, { passive: false });
+    }
+    
+    function enableScroll() {
+        body.style.overflow = '';
+        body.classList.add('scroll-enabled');
+        loadingOverlay.removeEventListener('wheel', preventScroll);
+        loadingOverlay.removeEventListener('touchmove', preventScroll);
+    }
+    
+    function preventScroll(e) {
+        e.preventDefault();
+        return false;
+    }
+    
+    disableScroll();
+    
+    // Hide loading overlay after page fully loads
+    window.addEventListener('load', function() {
+        setTimeout(() => {
+            loadingOverlay.classList.add('hide');
+            mainContent.classList.add('visible');
+            
+            setTimeout(() => {
+                enableScroll();
+                loadingOverlay.style.display = 'none';
+            }, 600);
+        }, 2200);
+    });
+    
+    // Render all sections after loading (ensures grids are populated)
+    renderGrid('restaurantGrid', restaurantItems);
+    renderGrid('foodGrid', foodItems);
+    renderGrid('drinkGrid', drinkBakeryItems);
+    
+    // Header scroll hide/show
+    const header = document.getElementById('mainHeader');
+    let lastScrollY = window.scrollY;
+    let ticking = false;
+    
+    function handleHeaderOnScroll() {
+        if (!body.classList.contains('scroll-enabled')) return;
+        const currentScrollY = window.scrollY;
+        if (currentScrollY > lastScrollY && currentScrollY > 80) {
+            header.classList.add('header-hidden');
+        } else if (currentScrollY < lastScrollY) {
+            header.classList.remove('header-hidden');
+        }
+        if (currentScrollY <= 10) header.classList.remove('header-hidden');
+        lastScrollY = currentScrollY;
+        ticking = false;
+    }
+    
+    window.addEventListener('scroll', () => {
+        if (!ticking) {
+            requestAnimationFrame(() => {
+                handleHeaderOnScroll();
+                ticking = false;
+            });
+            ticking = true;
+        }
+    });
+    
+    // Reservation Modal Logic
+    const modal = document.getElementById('reserveModal');
+    const reserveBtns = document.querySelectorAll('#reserveBtnNav, #mobileReserveBtn, a[href="#reserve"]');
+    const closeModalBtn = document.getElementById('closeModalBtn');
+    const reserveFormModal = document.getElementById('reserveForm');
+    const toast = document.getElementById('toastPopup');
+    
+    function openModalFn() { modal.style.display = 'flex'; }
+    function closeModalFn() { modal.style.display = 'none'; }
+    function showToastMsg(msg) { toast.textContent = msg || "✅ Reservation sent! We'll confirm shortly."; toast.style.opacity = '1'; setTimeout(() => toast.style.opacity = '0', 3000); }
+    
+    reserveBtns.forEach(btn => btn.addEventListener('click', (e) => { 
+        e.preventDefault(); 
+        openModalFn(); 
+        closeMobileMenu(); 
+    }));
+    if(closeModalBtn) closeModalBtn.addEventListener('click', closeModalFn);
+    window.addEventListener('click', (e) => { if (e.target === modal) closeModalFn(); });
+    
+    if(reserveFormModal) {
+        reserveFormModal.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            const name = document.getElementById('guestName').value.trim();
+            const contact = document.getElementById('contactInfo').value.trim();
+            const guests = document.getElementById('guests').value;
+            const datetime = document.getElementById('reserveDateTime').value;
+            if(!name || !contact || !guests || !datetime) { alert("Please fill all required fields."); return; }
+            showToastMsg("✅ Reservation received! We'll confirm shortly.");
+            closeModalFn();
+            reserveFormModal.reset();
+            const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+            document.getElementById('reserveDateTime').value = now.toISOString().slice(0,16);
+        });
+    }
+    const dtInput = document.getElementById('reserveDateTime');
+    if(dtInput) { const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); dtInput.min = now.toISOString().slice(0,16); dtInput.value = now.toISOString().slice(0,16); }
+    
+    // Mobile menu toggle
+    const navLinksContainer = document.getElementById('navLinks');
+    const mobileBtn = document.getElementById('mobileMenuBtn');
+    function closeMobileMenu() { if(navLinksContainer) navLinksContainer.classList.remove('mobile-nav-active'); }
+    if(mobileBtn) mobileBtn.addEventListener('click', (e) => { e.stopPropagation(); navLinksContainer.classList.toggle('mobile-nav-active'); });
+    document.addEventListener('click', (e) => { if (mobileBtn && !mobileBtn.contains(e.target) && navLinksContainer && !navLinksContainer.contains(e.target)) closeMobileMenu(); });
+    
+    const galleryNavLink = document.querySelector('.nav-links a[href="gallery.html"]');
+    if(galleryNavLink) galleryNavLink.classList.add('active');
+</script>
+</body>
+</html>
