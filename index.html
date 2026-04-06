@@ -4,8 +4,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, user-scalable=yes">
     <title>ASAGOHAN Cafe & Eatery | Japanese-Khmer Fusion | Siem Reap</title>
-    <meta name="description" content="ASAGOHAN Cafe & Eatery in Siem Reap — all-day breakfast, Japanese, Khmer & Western dishes, fresh in-house bakery, coffee, fresh juice, smoothies, wine & cocktails. Vegan-friendly, air-conditioned, steps from Angkor Night Market.">
-    <meta name="keywords" content="ASAGOHAN, Siem Reap cafe, all day breakfast, Japanese breakfast Siem Reap, fresh bakery Siem Reap, vegan Siem Reap, Angkor Night Market, onigiri Cambodia, Khmer food, Western food, wine cocktails">
+    <meta name="description" content="ASAGOHAN Cafe & Eatery in Siem Reap — all-day breakfast, Japanese, Khmer & Western dishes, home-made in-house bakery, coffee, fresh juice, smoothies, wine & cocktails. Vegan-friendly, air-conditioned, steps from Angkor Night Market.">
+    <meta name="keywords" content="ASAGOHAN, Siem Reap cafe, all day breakfast, Japanese breakfast Siem Reap, home-made bakery Siem Reap, vegan Siem Reap, Angkor Night Market, onigiri Cambodia, Khmer food, Western food, wine cocktails">
     <link rel="icon" type="image/png" href="images/asagohan-logo.png">
     <!-- Font Awesome 6 -->
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
@@ -18,6 +18,7 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
+            -webkit-tap-highlight-color: transparent;
         }
 
         body {
@@ -736,11 +737,10 @@
             .nav-links.mobile-nav-active {
                 display: flex !important;
                 position: absolute;
-                top: calc(100% + 10px);
+                top: calc(100% + 0px);
                 left: 0;
                 width: 100%;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(10px);
+                background: rgb(255, 255, 255);
                 padding: 1.5rem;
                 gap: 1rem;
                 box-shadow: 0 10px 25px rgba(0,0,0,0.1);
@@ -807,10 +807,7 @@
         }
         
         @media (max-width: 768px) {
-            .hero-grid {
-                flex-direction: column;
-                text-align: center;
-            }
+            
             .hero-text {
                 order: 2;
                 width: 100%;
@@ -859,12 +856,12 @@
         
         .stat-number {
             font-weight: 500;
-            font-size: clamp(0.9rem, 3.5vw, 1.1rem);
+            font-size: clamp(0.6rem, 2.4vw, 0.9rem);
             color: var(--charcoal);
         }
         
         .stat-label {
-            font-size: clamp(0.6rem, 2.2vw, 0.7rem);
+            font-size: clamp(0.5rem, 2vw, 0.6rem);
             text-transform: uppercase;
             letter-spacing: 1px;
             color: var(--taupe);
@@ -1024,7 +1021,7 @@
             font-size: clamp(0.75rem, 3vw, 0.9rem);
         }
 
-        /* bakery section */
+        /* bakery section - UPDATED for Home Made Bakery */
         .bakery-highlight {
             background: var(--warm-beige);
         }
@@ -1402,35 +1399,63 @@
             }
         }
         
-        .popup-toast {
-            position: fixed;
-            bottom: 30px;
-            left: 50%;
-            transform: translateX(-50%);
-            background: #2c2418;
-            color: white;
-            padding: clamp(10px, 3vw, 12px) clamp(20px, 6vw, 28px);
-            border-radius: 50px;
-            font-size: clamp(0.7rem, 2.8vw, 0.85rem);
-            z-index: 2100;
-            opacity: 0;
-            transition: opacity 0.2s;
-            pointer-events: none;
-            white-space: nowrap;
-        }
-        
-        @media (max-width: 768px) {
-            .popup-toast {
-                white-space: normal;
-                width: 90%;
-                max-width: 280px;
-                text-align: center;
-            }
-        }
-        
-        .popup-toast.show {
-            opacity: 1;
-        }
+        .custom-alert-overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    backdrop-filter: blur(4px);
+    z-index: 4000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    visibility: hidden;
+    opacity: 0;
+    transition: visibility 0.2s, opacity 0.2s ease;
+}
+.custom-alert-overlay.active {
+    visibility: visible;
+    opacity: 1;
+}
+.custom-alert-card {
+    background: white;
+    max-width: 360px;
+    width: 85%;
+    border-radius: 32px;
+    text-align: center;
+    padding: 2rem 1.5rem 1.8rem;
+    box-shadow: 0 30px 40px rgba(0,0,0,0.2);
+    animation: alertPop 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2);
+}
+.alert-icon {
+    font-size: 3.5rem;
+    color: #c9b292;
+    margin-bottom: 1rem;
+}
+.custom-alert-card h4 {
+    font-size: 1.4rem;
+    font-weight: 500;
+    margin-bottom: 0.75rem;
+}
+.custom-alert-card p {
+    font-size: 0.9rem;
+    color: #5e5343;
+    margin-bottom: 1.8rem;
+}
+.alert-ok-btn {
+    background: #c9b292;
+    border: none;
+    padding: 12px 28px;
+    border-radius: 50px;
+    font-weight: 500;
+    cursor: pointer;
+}
+.alert-ok-btn:hover {
+    background: #b5986e;
+    transform: translateY(-2px);
+}
         
         footer {
             background: #f7f2ea;
@@ -1489,14 +1514,38 @@
         
         /* Additional mobile fixes */
         @media (max-width: 480px) {
-            .hero {
-                padding: 140px 0 20px;
+
+            .hero-grid {
+                height: 105svh;
+                background: 
+                    linear-gradient(rgba(0, 0, 0, 0.658), rgba(0, 0, 0, 0.692)),
+                    url('images/top-page-asagohan.webp');
+                background-size: cover;
+                background-position: center;
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                text-align: center;
             }
+            .hero {
+                padding: 0 !important;
+                margin: 0 !important;
+            }
+
+            .hero-img {
+                display: none;
+            }
+
+            .hero-text, .hero-tagline, .hero-desc, .stat-number, .stat-label, .hero .btn  {
+                color: white;
+            }
+
+
             .hero-stats {
                 display: flex;
                 flex-wrap: wrap;
                 align-items: center;
-                justify-content: space-between;
+                justify-content: space-around;
                 gap: 0.8rem;
             }
             
@@ -1513,6 +1562,21 @@
             .info-row i {
                 width: auto;
             }
+
+            .card h3 {
+                font-size: 0.8rem;
+            }
+
+            .card-content {
+                width: 300px;
+                max-width: 50%;
+            }
+
+            .info-cards {
+                display: block;
+                width: 100%;
+                padding: 0;
+            }
         }
         
         /* Landscape orientation */
@@ -1524,7 +1588,7 @@
             .hero-grid {
                 flex-direction: row;
                 text-align: left;
-                gap: 1.5rem;
+
             }
             
             
@@ -1625,9 +1689,11 @@
             </div>
             
             <div class="logo-hamburger-row">
+                <a href="index.html" style="text-decoration: none; color: #3a3329;">
                 <div class="logo">
                     <h1>ASAGOHAN <span>CAFE</span> <span>&</span> <span>EATERY</span></h1>
                 </div>
+                </a>
                 <div class="mobile-menu" id="mobileMenuBtn">
                     <i class="fas fa-bars"></i>
                 </div>
@@ -1661,7 +1727,7 @@
                     <div class="hero-stats">
                         <div class="stat"><div class="stat-number">7:00 – 21:30</div><div class="stat-label">Daily Open</div></div>
                         <div class="stat"><div class="stat-number">All Day Breakfast</div><div class="stat-label">Served All Day</div></div>
-                        <div class="stat"><div class="stat-number">Fresh Bakery</div><div class="stat-label">Made In-House</div></div>
+                        <div class="stat"><div class="stat-number">Home Made Bakery</div><div class="stat-label">Fresh Daily</div></div>
                     </div>
                 </div>
                 <div class="hero-img fade-left">
@@ -1673,7 +1739,7 @@
         <div class="container">
             <div class="info-cards" id="infoCards">
                 <div class="card stagger-item"><img src="images/breakfast.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>All Day Breakfast</h3><p>Western, Japanese & Khmer breakfast classics</p></div></div>
-                <div class="card stagger-item"><img src="images/baked.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Fresh Bakery</h3><p>Pastries, breads, and sweets baked daily</p></div></div>
+                <div class="card stagger-item"><img src="images/baked.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Home Made Bakery</h3><p>Artisan breads & pastries baked from scratch daily</p></div></div>
                 <div class="card stagger-item"><img src="images/vegan.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Vegan Options</h3><p>Clearly labeled plant-based dishes</p></div></div>
                 <div class="card stagger-item"><img src="images/coffee-cocktail.webp" class="card-icon" onerror="this.style.display='none'"><div class="card-content"><h3>Coffee & Cocktails</h3><p>Specialty coffee, wine & smoothies</p></div></div>
             </div>
@@ -1683,26 +1749,27 @@
             <div class="container">
                 <div class="text-center fade-up">
                     <h2>Our Menu</h2>
-                    <p style="margin-bottom: 0.8rem; font-size: 0.85rem;">Western · Japanese-Inspired · Khmer Favorites | Fresh Bakery · Coffee · Wine & Cocktails</p>
+                    <p style="margin-bottom: 0.8rem; font-size: 0.85rem;">Western · Japanese-Inspired · Khmer Favorites | Home Made Bakery · Coffee · Wine & Cocktails</p>
                 </div>
                 <div class="menu-showcase scale-in">
                     <div class="menu-icon"><i class="fas fa-utensils"></i></div>
                     <h3>Discover Our Culinary Journey</h3>
-                    <p>Explore our full menu featuring All-Day Breakfast, authentic Japanese dishes, Khmer specialties, Western classics, and our signature in-house bakery. Plus a curated selection of coffee, fresh juices, smoothies, wine & cocktails.</p>
+                    <p>Explore our full menu featuring All-Day Breakfast, authentic Japanese dishes, Khmer specialties, Western classics, and our signature home-made bakery. Plus a curated selection of coffee, fresh juices, smoothies, wine & cocktails.</p>
                     <a href="menu/index.html" class="btn view-menu-btn">VIEW FULL MENU <i class="fas fa-arrow-right"></i></a>
                 </div>
             </div>
         </section>
 
+        <!-- UPDATED: Home Made Bakery section with rich, warm description -->
         <section id="bakery" class="bakery-highlight">
             <div class="container bakery-grid">
                 <div class="bakery-text fade-right">
-                    <h2>Fresh Bakery</h2>
-                    <p>At ASAGOHAN, we celebrate the art of traditional baking. Each day, our pastry team begins early, crafting fresh breads, pastries, and sweets — all made from scratch in our own kitchen. We carefully select high-quality ingredients and apply time-honored techniques to ensure every creation is full of flavor.</p>
-                    <p>From the first morning batch to the last treat of the day, our in-house bakery brings warmth, freshness, and craftsmanship to every bite.</p>
+                    <h2>Home Made Bakery</h2>
+                    <p>At ASAGOHAN, we believe the heart of a great meal starts with bread made by hand. Our <strong>Home Made Bakery</strong> is a labor of love — every morning, our bakers knead, proof, and bake small batches of artisan breads, flaky croissants, sweet pastries, and savory buns using time-honored techniques and the finest ingredients.</p>
+                    <p>From the first crisp bite of a morning baguette to the buttery layers of our signature Danish, everything is crafted from scratch in our own kitchen. No shortcuts, no mixes — just the warmth and authenticity of home baking. Come taste the difference that patience, passion, and tradition make.</p>
                 </div>
                 <div class="bakery-image fade-left">
-                    <div class="bakery-in-img"><img src="images/bakery.webp" alt="Fresh bakery counter" onerror="this.src='https://placehold.co/600x400/f7f2ea/8b7a66?text=Fresh+Bakery'"></div>
+                    <div class="bakery-in-img"><img src="images/bakery.webp" alt="Home Made Bakery counter" onerror="this.src='https://placehold.co/600x400/f7f2ea/8b7a66?text=Home+Made+Bakery'"></div>
                 </div>
             </div>
         </section>
@@ -1725,7 +1792,7 @@
             <div class="container">
                 <div class="text-center fade-up">
                     <h2>Gallery</h2>
-                    <p style="font-size: 0.85rem;">Fresh bakery · Japanese breakfast · Siem Reap moments — click to explore more</p>
+                    <p style="font-size: 0.85rem;">Home Made Bakery · Japanese breakfast · Siem Reap moments — click to explore more</p>
                 </div>
                 <div class="gallery-grid" id="galleryGrid"></div>
             </div>
@@ -1753,11 +1820,11 @@
     <footer>
         <div class="container">
             <div class="social-links">
-                <a href="#"><i class="fab fa-facebook-f"></i></a>
-                <a href="#"><i class="fab fa-instagram"></i></a>
-                <a href="#"><i class="fa-brands fa-tiktok"></i></a>
+                <a href="https://web.facebook.com/p/Asagohan-CafeEatery-61572590002530/?_rdc=1&_rdr#"><i class="fab fa-facebook-f"></i></a>
+                <a href="https://www.instagram.com/asagohan_cafe_eatery/"><i class="fab fa-instagram"></i></a>
+                <a href="https://www.tiktok.com/@asagohan.cafe.eat"><i class="fa-brands fa-tiktok"></i></a>
             </div>
-            <p>&copy; 2026 ASAGOHAN Cafe & Eatery. All-Day Breakfast · Japanese · Khmer · Western Cuisine | Fresh Bakery · Coffee · Wine & Cocktails</p>
+            <p>&copy; 2026 ASAGOHAN Cafe & Eatery. All-Day Breakfast · Japanese · Khmer · Western Cuisine | Home Made Bakery · Coffee · Wine & Cocktails</p>
         </div>
     </footer>
 
@@ -1776,11 +1843,71 @@
             </div>
         </div>
     </div>
-    <div id="toastPopup" class="popup-toast">✅ Reservation sent! We'll confirm shortly.</div>
+    <!-- NEW CENTERED ALERT WITH OK BUTTON -->
+<div id="customAlert" class="custom-alert-overlay">
+    <div class="custom-alert-card">
+        <div class="alert-icon"><i class="fas fa-check-circle"></i></div>
+        <h4>Reservation Sent</h4>
+        <p>Thank you! Your reservation request has been received.<br>We'll confirm shortly via your contact details.</p>
+        <button class="alert-ok-btn" id="alertOkBtn">OK</button>
+    </div>
+</div>
 </div>
 
 <script>
-    // Gallery images
+    // ==================== GOOGLE APPS SCRIPT PROXY ====================
+    // IMPORTANT: Replace with your Google Apps Script Web App URL
+    const GOOGLE_SCRIPT_URL = 'https://script.google.com/macros/s/AKfycbxUZ-2W4GxUG4X5m_9iPt4fk9tqMw3PMzsebZ-r_uvErBVOHVaTqMvn2pY-Cm0AB8iM/exec';
+    
+    // Helper function to format date as DD-MMM-YYYY
+    function formatDate(date) {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        const day = String(date.getDate()).padStart(2, '0');
+        const month = months[date.getMonth()];
+        const year = date.getFullYear();
+        return `${day}-${month}-${year}`;
+    }
+    
+    // Helper function to format time as HH:MM AM/PM
+    function formatTime(date) {
+        let hours = date.getHours();
+        const minutes = String(date.getMinutes()).padStart(2, '0');
+        const ampm = hours >= 12 ? 'PM' : 'AM';
+        hours = hours % 12;
+        hours = hours ? hours : 12;
+        return `${hours}:${minutes} ${ampm}`;
+    }
+    
+    // Send to Telegram via Google Apps Script proxy
+    async function sendToTelegram(name, contact, guests, dateStr, timeStr, specialRequest) {
+        const payload = {
+            name: name,
+            contact: contact,
+            guests: guests,
+            date: dateStr,
+            time: timeStr,
+            specialRequest: specialRequest || 'None'
+        };
+        
+        try {
+            const response = await fetch(GOOGLE_SCRIPT_URL, {
+                method: 'POST',
+                mode: 'no-cors',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify(payload)
+            });
+            
+            console.log('Reservation sent successfully!');
+            return { success: true };
+        } catch (error) {
+            console.error('Error:', error);
+            throw error;
+        }
+    }
+    
+    // Gallery images (if on gallery page)
     const galleryImages = [
         { name: "Fresh Melon Bread", img: "images/gallery1.webp" },
         { name: "Japanese Breakfast Set", img: "images/gallery2.webp" },
@@ -1817,20 +1944,21 @@
     const mainContent = document.getElementById('mainContent');
     const body = document.body;
     
-    // Function to disable scrolling
     function disableScroll() {
         body.style.overflow = 'hidden';
-        // Also prevent wheel events on the loading overlay
-        loadingOverlay.addEventListener('wheel', preventScroll, { passive: false });
-        loadingOverlay.addEventListener('touchmove', preventScroll, { passive: false });
+        if(loadingOverlay) {
+            loadingOverlay.addEventListener('wheel', preventScroll, { passive: false });
+            loadingOverlay.addEventListener('touchmove', preventScroll, { passive: false });
+        }
     }
     
-    // Function to enable scrolling
     function enableScroll() {
         body.style.overflow = '';
         body.classList.add('scroll-enabled');
-        loadingOverlay.removeEventListener('wheel', preventScroll);
-        loadingOverlay.removeEventListener('touchmove', preventScroll);
+        if(loadingOverlay) {
+            loadingOverlay.removeEventListener('wheel', preventScroll);
+            loadingOverlay.removeEventListener('touchmove', preventScroll);
+        }
     }
     
     function preventScroll(e) {
@@ -1838,11 +1966,9 @@
         return false;
     }
     
-    // Initially disable scrolling
     disableScroll();
     
     // ===== SCROLL ANIMATION INTERSECTION OBSERVER =====
-    // This will be initialized after loading completes to ensure all elements are animated
     let animationObserver = null;
     
     function initScrollAnimations() {
@@ -1859,7 +1985,6 @@
         
         animatedElements.forEach(el => animationObserver.observe(el));
         
-        // Stagger animation for info cards
         const staggerCards = document.querySelectorAll('.stagger-item');
         staggerCards.forEach((card, index) => {
             card.style.transitionDelay = `${index * 0.1}s`;
@@ -1869,31 +1994,26 @@
         });
     }
     
-    // Hide loading overlay after page fully loads
     window.addEventListener('load', function() {
-        // Add a small delay to ensure animation completes smoothly
         setTimeout(() => {
-            loadingOverlay.classList.add('hide');
-            mainContent.classList.add('visible');
-            
-            // Enable scrolling after the overlay is hidden
+            if(loadingOverlay) loadingOverlay.classList.add('hide');
+            if(mainContent) mainContent.classList.add('visible');
             setTimeout(() => {
                 enableScroll();
-                // Initialize scroll animations AFTER loading completes
                 initScrollAnimations();
-                // Remove overlay from DOM after transition
-                loadingOverlay.style.display = 'none';
+                if(loadingOverlay) loadingOverlay.style.display = 'none';
             }, 600);
-        }, 2200); // 2.2 seconds loading animation
+        }, 2200);
     });
     
-    // Header scroll hide/show (only active after loading)
+    // Header scroll hide/show
     const header = document.getElementById('mainHeader');
     let lastScrollY = window.scrollY;
     let ticking = false;
     
     function handleHeaderOnScroll() {
         if (!body.classList.contains('scroll-enabled')) return;
+        if(!header) return;
         const currentScrollY = window.scrollY;
         if (currentScrollY > lastScrollY && currentScrollY > 80) {
             header.classList.add('header-hidden');
@@ -1918,50 +2038,121 @@
         }
     });
     
-    // Modal & reservation
-    const modal = document.getElementById('reserveModal');
+    // Reservation Modal + Centered Alert
+    const modalReserve = document.getElementById('reserveModal');
     const reserveBtns = document.querySelectorAll('#reserveBtnNav, #mobileReserveBtn, a[href="#reserve"]');
     const closeModalBtn = document.getElementById('closeModalBtn');
-    const reserveForm = document.getElementById('reserveForm');
-    const toast = document.getElementById('toastPopup');
+    let reserveForm = document.getElementById('reserveForm');
+    const customAlertOverlay = document.getElementById('customAlert');
+    const alertOkBtn = document.getElementById('alertOkBtn');
     
-    function openModal() { modal.classList.add('active'); }
-    function closeModal() { modal.classList.remove('active'); }
-    function showToast(msg) { toast.textContent = msg || "✅ Reservation sent! We'll confirm shortly."; toast.classList.add('show'); setTimeout(() => toast.classList.remove('show'), 3000); }
+    function openReserveModal() { if(modalReserve) modalReserve.style.display = 'flex'; }
+    function closeReserveModal() { if(modalReserve) modalReserve.style.display = 'none'; }
+    function showCenteredAlert() {
+        if(customAlertOverlay) {
+            customAlertOverlay.classList.add('active');
+            const card = customAlertOverlay.querySelector('.custom-alert-card');
+            if(card) {
+                card.style.animation = 'none';
+                card.offsetHeight;
+                card.style.animation = 'alertPop 0.25s cubic-bezier(0.2, 0.9, 0.4, 1.2)';
+            }
+        }
+    }
+    function hideAlert() {
+        if(customAlertOverlay) customAlertOverlay.classList.remove('active');
+    }
     
-    reserveBtns.forEach(btn => btn.addEventListener('click', (e) => { 
-        e.preventDefault(); 
-        openModal(); 
-        closeMobileMenu(); 
-    }));
-    closeModalBtn.addEventListener('click', closeModal);
-    window.addEventListener('click', (e) => { if (e.target === modal) closeModal(); });
+    reserveBtns.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openReserveModal(); closeMobileMenu(); }));
+    if(closeModalBtn) closeModalBtn.addEventListener('click', closeReserveModal);
+    if(modalReserve) {
+        window.addEventListener('click', (e) => { if (e.target === modalReserve) closeReserveModal(); });
+    }
+    if(alertOkBtn) alertOkBtn.addEventListener('click', () => { hideAlert(); });
     
-    reserveForm.addEventListener('submit', async (e) => {
-        e.preventDefault();
-        const name = document.getElementById('guestName').value.trim();
-        const contact = document.getElementById('contactInfo').value.trim();
-        const guests = document.getElementById('guests').value;
-        const datetime = document.getElementById('reserveDateTime').value;
-        if(!name || !contact || !guests || !datetime) { alert("Please fill all required fields."); return; }
-        showToast("✅ Reservation received! We will send confirmation shortly.");
-        closeModal();
-        reserveForm.reset();
-        const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
-        document.getElementById('reserveDateTime').value = now.toISOString().slice(0,16);
-    });
+    // Form submission with Google Apps Script proxy
+    if(reserveForm) {
+        const newForm = reserveForm.cloneNode(true);
+        reserveForm.parentNode.replaceChild(newForm, reserveForm);
+        reserveForm = newForm;
+        
+        reserveForm.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            const name = document.getElementById('guestName').value.trim();
+            const contact = document.getElementById('contactInfo').value.trim();
+            const guests = document.getElementById('guests').value;
+            const datetime = document.getElementById('reserveDateTime').value;
+            const specialRequest = document.getElementById('specialRequest')?.value.trim() || '';
+            
+            if(!name || !contact || !guests || !datetime) {
+                alert("Please fill all required fields.");
+                return;
+            }
+            
+            const dateObj = new Date(datetime);
+            const formattedDate = formatDate(dateObj);
+            const formattedTime = formatTime(dateObj);
+            
+            const submitBtn = reserveForm.querySelector('button[type="submit"]');
+            const originalText = submitBtn?.innerHTML;
+            
+            if(submitBtn) {
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-pulse"></i> Sending...';
+                submitBtn.disabled = true;
+            }
+            
+            try {
+                await sendToTelegram(name, contact, guests, formattedDate, formattedTime, specialRequest);
+                console.log('Reservation sent successfully!');
+                showCenteredAlert();
+                closeReserveModal();
+                reserveForm.reset();
+                const now = new Date();
+                now.setMinutes(now.getMinutes() - now.getTimezoneOffset());
+                const dtField = document.getElementById('reserveDateTime');
+                if(dtField) {
+                    dtField.min = now.toISOString().slice(0,16);
+                    dtField.value = now.toISOString().slice(0,16);
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Failed to send reservation. Please try again.\nError: ' + error.message);
+            } finally {
+                if(submitBtn) {
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                }
+            }
+        });
+    }
     
     const dtInput = document.getElementById('reserveDateTime');
-    if(dtInput) { const now = new Date(); now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); dtInput.min = now.toISOString().slice(0,16); dtInput.value = now.toISOString().slice(0,16); }
+    if(dtInput) { 
+        const now = new Date(); 
+        now.setMinutes(now.getMinutes() - now.getTimezoneOffset()); 
+        dtInput.min = now.toISOString().slice(0,16); 
+        dtInput.value = now.toISOString().slice(0,16); 
+    }
     
     // Mobile menu
     const navLinksContainer = document.getElementById('navLinks');
     const mobileBtn = document.getElementById('mobileMenuBtn');
-    function closeMobileMenu() { navLinksContainer.classList.remove('mobile-nav-active'); }
-    mobileBtn.addEventListener('click', (e) => { e.stopPropagation(); navLinksContainer.classList.toggle('mobile-nav-active'); });
-    document.addEventListener('click', (e) => { if (!mobileBtn.contains(e.target) && !navLinksContainer.contains(e.target)) closeMobileMenu(); });
+    function closeMobileMenu() { 
+        if(navLinksContainer) navLinksContainer.classList.remove('mobile-nav-active'); 
+    }
+    if(mobileBtn) {
+        mobileBtn.addEventListener('click', (e) => { 
+            e.stopPropagation(); 
+            if(navLinksContainer) navLinksContainer.classList.toggle('mobile-nav-active'); 
+        });
+    }
+    document.addEventListener('click', (e) => { 
+        if(mobileBtn && navLinksContainer && !mobileBtn.contains(e.target) && !navLinksContainer.contains(e.target)) 
+            closeMobileMenu(); 
+    });
     
-    // Smooth scroll function (only after loading)
+    // Smooth scroll
     function smoothScrollToElement(targetId) {
         const target = document.querySelector(targetId);
         const headerEl = document.getElementById('mainHeader');
@@ -1976,7 +2167,6 @@
         return false;
     }
     
-    // Smooth scroll for all anchor links
     document.querySelectorAll('a[href^="#"]').forEach(anchor => {
         const href = anchor.getAttribute('href');
         if (href === "#" || href === "#reserve") return;
@@ -2001,7 +2191,7 @@
         });
     });
     
-    // Active link highlighting on scroll
+    // Active link highlighting
     window.addEventListener('scroll', () => {
         if (!body.classList.contains('scroll-enabled')) return;
         let current = '';
@@ -2024,6 +2214,9 @@
     });
     
     window.dispatchEvent(new Event('scroll'));
+    
+    console.log('Telegram via Google Apps Script is ready!');
+    console.log('Date format: DD-MMM-YYYY, Time: HH:MM AM/PM');
 </script>
 </body>
 </html>
